@@ -300,9 +300,25 @@ Earlier fixes from the plan (§6) are already on the page:
 - The decision rule needs the 95% interval to exclude zero.
 - The tool's footer says "Many practice management tools", not "Most".
 
+## Live site check (2026-10-11)
+
+Published with GitHub Pages at https://andrepreston.github.io/The-Growth-Challenge/ (from `main`, root).
+
+| Check on the live URL | Result |
+| --- | --- |
+| Gate 3, rendered text after every animation | 1440px: 626 numbers, 0 need review. 375px: 602 numbers, 0 need review. |
+| Page health | All 13 charts drawn, 0 elements left hidden, no console errors, no horizontal scroll |
+| Open Slot, standalone (`tool/`) | QR card generated. Real clicks: copied text matches the output exactly; Copy image puts a PNG on the clipboard ("Card image copied") |
+| Open Slot, embedded demo | Real click on Copy inside the frame: text copied, page toast shows "Copied to your clipboard"; frame sizes itself to the tool |
+| Lighthouse, desktop | Performance 95–97, accessibility 100, best practices 100, SEO 100 |
+| Lighthouse, mobile | Performance 86–87, accessibility 100, best practices 100, SEO 100 (blocking time 0ms, layout shift 0) |
+| Lighthouse, tool on mobile | Performance 86, accessibility 100, best practices 100 |
+
+Mobile performance stays under 90 because first paint (3.2s) waits on the Google Fonts stylesheet. The fix is to self-host the three font families; that is pending Andre's go-ahead.
+
 ## Open before submission
 
 - The footer links to the GitHub repository (https://github.com/Andrepreston/The-Growth-Challenge); the live site is https://andrepreston.github.io/The-Growth-Challenge/.
-- Real clipboard copying in Open Slot needs a real click on the live site; headless Chrome blocks clipboard access. Both copy buttons' fallback messages were tested.
-- Re-run gates 1–3 and Lighthouse against the live URL.
+- Clipboard copying was tested with real clicks on the live site (above).
+- Mobile Lighthouse performance (86–87): self-host fonts if Andre agrees.
 - Andre to confirm the wording "Custom skills: Reusable instructions I set up for Claude."

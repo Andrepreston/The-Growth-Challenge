@@ -302,7 +302,7 @@ Earlier fixes from the plan (§6) are already on the page:
 
 ## Open before submission
 
-- The footer links to the GitHub repository (https://github.com/Andrepreston/The-Growth-Challenge); the live-site link goes into README.md once published.
+- The footer links to the GitHub repository (https://github.com/Andrepreston/The-Growth-Challenge); the live site is https://andrepreston.github.io/The-Growth-Challenge/.
 - Real clipboard copying in Open Slot needs a real click on the live site; headless Chrome blocks clipboard access. Both copy buttons' fallback messages were tested.
 - Re-run gates 1–3 and Lighthouse against the live URL.
 - Andre to confirm the wording "Custom skills: Reusable instructions I set up for Claude."

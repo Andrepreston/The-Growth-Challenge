@@ -1,4 +1,4 @@
-# The Growth Challenge: what goes with paying
+# The growth challenge
 
 An independent submission by Andre Nwofor for the Carepatron AI Growth Marketer internship. It is not an official Carepatron site.
 
@@ -10,7 +10,7 @@ The site answers the five parts of the challenge on one page:
 4. **Ship something.** Open Slot, a free booking-link kit, live and embedded in the page (also at `tool/`).
 5. **Tell us about the AI.** Tools, method, and where the AI got something wrong.
 
-**Live site:** link to be added once published.
+**Live site:** https://andrepreston.github.io/The-Growth-Challenge/
 
 The data is fictional sample data supplied by Carepatron for the challenge.
 

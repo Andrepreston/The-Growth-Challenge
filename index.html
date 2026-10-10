@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What goes with paying: a trial analysis by Andre Nwofor</title>
+<meta name="description" content="An independent submission by Andre Nwofor for the Carepatron AI Growth Marketer internship: what goes with paying in a trial, one journey, one email and a free booking-link tool. Built on fictional sample data.">
+<meta name="theme-color" content="#0A1A2F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1A2F'/%3E%3Ccircle cx='11' cy='16' r='4.5' fill='%230FB5A6'/%3E%3Ccircle cx='21' cy='16' r='4' fill='none' stroke='%23AAB8CC' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-nav is-dark" id="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#top">Andre Nwofor<span>Carepatron growth challenge</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-current"><span class="n"></span> <span class="t">Sections</span></span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8l4-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <nav class="nav-menu" id="nav-menu" aria-label="Sections">
+      <ol class="nav-links">
+        <li><a href="#data"><span class="n">01</span> Data</a></li>
+        <li><a href="#journey"><span class="n">02</span> Journey</a></li>
+        <li><a href="#message"><span class="n">03</span> Message</a></li>
+        <li><a href="#ship"><span class="n">04</span> Open Slot</a></li>
+        <li><a href="#ai"><span class="n">05</span> AI</a></li>
+      </ol>
+    </nav>
+  </div>
+  <div class="nav-progress" aria-hidden="true"><span></span></div>
+</header>
+
+<main id="main">
+
+  <!-- ================================================================ HERO -->
+  <section class="hero band-dark" id="top" data-band="dark" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="byline">An independent submission by <strong>Andre Nwofor</strong> for the Carepatron AI Growth Marketer internship.</p>
+          <h1 id="hero-title">Almost half of new practices never come back after their first day.</h1>
+          <p class="subhead">I analysed <span data-f="base.practices" data-fmt="int">518</span> trial practices from Carepatron's sample data. Here's what goes with paying, a journey to get more practices there, and a free tool built for one of those moments.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#demo">Try Open Slot</a>
+            <a class="btn btn-secondary" href="#data">Read the findings</a>
+          </div>
+        </div>
+
+        <figure class="dotfield" data-chart="heroDots">
+          <div class="dotfield-plot"></div>
+          <ul class="dot-legend">
+            <li><span class="key key-paid" aria-hidden="true"></span>Paid within 30 days <strong data-f="base.paid" data-fmt="int">64</strong></li>
+            <li><span class="key key-other" aria-hidden="true"></span>Came back, didn't pay</li>
+            <li><span class="key key-gone" aria-hidden="true"></span>Never came back after day 0 <strong data-f="dropoff.never_back_after_day0" data-fmt="int">235</strong></li>
+          </ul>
+          <figcaption>Each dot is one of the <span data-f="base.practices" data-fmt="int">518</span> trial practices. Carepatron sample data (fictional).</figcaption>
+        </figure>
+      </div>
+
+      <ul class="stats" aria-label="Key numbers">
+        <li class="stat">
+          <span class="stat-n" data-f="base.practices" data-fmt="int" data-count>518</span>
+          <span class="stat-l">practices analysed, after removing <span data-f="cleaning.removed_total" data-fmt="int">34</span> spam and test accounts</span>
+        </li>
+        <li class="stat">
+          <span class="stat-n is-signal" data-f="base.conversion_pct" data-fmt="pct1" data-count>12.4%</span>
+          <span class="stat-l">paid within 30 days</span>
+        </li>
+        <li class="stat">
+          <span class="stat-n" data-f="dropoff.never_back_after_day0_pct" data-fmt="pct0" data-count>45%</span>
+          <span class="stat-l">never came back after day 0</span>
+        </li>
+        <li class="stat">
+          <span class="stat-n" data-f="dropoff.never_back_after_day0_paid" data-fmt="int">0</span>
+          <span class="stat-l">of those <span data-f="dropoff.never_back_after_day0" data-fmt="int">235</span> practices paid</span>
+        </li>
+        <li class="stat">
+          <span class="stat-n is-signal">3</span>
+          <span class="stat-l">actions still linked to paying after allowing for activity</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================================================================ 01 DATA -->
+  <section class="section band-paper" id="data" data-band="light" aria-labelledby="data-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow"><span class="n">01</span><span class="visually-hidden"> · </span>Read the data</p>
+        <h2 id="data-title">Paying goes with two things: coming back after day 0, and real client work.</h2>
+        <p class="lead">Of <span data-f="cleaning.workspaces_raw" data-fmt="int">552</span> trial workspaces that signed up in July–August 2026, <span data-f="base.practices" data-fmt="int">518</span> were real practices, and <span data-f="base.paid" data-fmt="int">64</span> of them paid within 30 days: <span data-f="base.conversion_pct" data-fmt="pct1">12.4%</span> (95% interval <span data-f="base.conversion_ci" data-fmt="ci">9.8–15.5%</span>). The data is fictional, supplied by Carepatron for the challenge.</p>
+      </header>
+
+      <!-- Beat 1 · Clean first -->
+      <article class="beat beat-clean" aria-labelledby="b1-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">1</span>Clean first</p>
+          <h3 id="b1-title"><span data-f="cleaning.removed_total" data-fmt="int">34</span> of the <span data-f="cleaning.workspaces_raw" data-fmt="int">552</span> sign-ups weren't real practices, so they came out first.</h3>
+          <p><span data-f="cleaning.spam_accounts" data-fmt="int">25</span> were phishing or spam accounts and <span data-f="cleaning.qa_accounts" data-fmt="int">9</span> were internal QA accounts. The spam accounts impersonate brands with digit swaps, never touched a clinical feature, went quiet after a median of about <span data-f="cleaning.spam_median_active_hours" data-fmt="int">63</span> hours, and none paid.</p>
+          <p><mark class="hl">Left in, they made importing look like something non-payers do.</mark> They produced <span data-f="cleaning.imports_from_spam_pct" data-fmt="pct0">88%</span> of all client imports and <span data-f="cleaning.portal_invites_from_spam_pct" data-fmt="pct0">85%</span> of portal invites. It looks like abuse of the client portal to send phishing invites, worth flagging to trust and safety.</p>
+          <p class="beat-note">Then one rule for what goes with paying: only events from a practice's first 14 days, and before it paid, count. <span data-f="cleaning.payer_billing_views_after_payment_pct" data-fmt="pct0">86%</span> of paying practices' billing-page views came after they paid, so later events describe customers, not trials.</p>
+          <p class="chip chip-high"><span class="chip-k">High</span> These accounts are spam or QA and must be removed</p>
+        </div>
+        <figure class="panel" data-chart="cleaning" aria-labelledby="c1-title">
+          <figcaption class="panel-title" id="c1-title"><span data-f="cleaning.removed_total" data-fmt="int">34</span> of <span data-f="cleaning.workspaces_raw" data-fmt="int">552</span> sign-ups removed: <span data-f="cleaning.spam_accounts" data-fmt="int">25</span> spam, <span data-f="cleaning.qa_accounts" data-fmt="int">9</span> internal QA</figcaption>
+          <div class="chart-plot"></div>
+          <div class="panel-extra">
+            <p class="spam-names"><span class="spam-names-k">Spam account names</span> <span class="mono">N0rton Billing</span> <span class="mono">Dep0p Help Desk</span> <span class="mono">Vinted Payments Team</span></p>
+            <div class="meters">
+              <p class="meters-k">Share produced by the <span data-f="cleaning.spam_accounts" data-fmt="int">25</span> spam accounts</p>
+              <div class="meter">
+                <span class="meter-l">Client imports</span>
+                <span class="meter-track"><span class="meter-fill" data-meter="cleaning.imports_from_spam_pct"></span></span>
+                <span class="meter-v"><strong data-f="cleaning.imports_from_spam_pct" data-fmt="pct0">88%</strong> <span class="of"><span data-f="cleaning.imports_from_spam" data-fmt="int,">947</span> of <span data-f="cleaning.imports_total" data-fmt="int,">1,075</span></span></span>
+              </div>
+              <div class="meter">
+                <span class="meter-l">Portal invites</span>
+                <span class="meter-track"><span class="meter-fill" data-meter="cleaning.portal_invites_from_spam_pct"></span></span>
+                <span class="meter-v"><strong data-f="cleaning.portal_invites_from_spam_pct" data-fmt="pct0">85%</strong> <span class="of"><span data-f="cleaning.portal_invites_from_spam" data-fmt="int,">1,311</span> of <span data-f="cleaning.portal_invites_total" data-fmt="int,">1,544</span></span></span>
+              </div>
+            </div>
+          </div>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="cleaning.workspaces_raw" data-fmt="int">552</span> workspaces, <span data-f="cleaning.events_raw" data-fmt="int,">7,665</span> events · <span data-f="cleaning.duplicate_event_rows" data-fmt="int">56</span> duplicate event rows also dropped</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Workspaces removed before analysis</caption>
+            <thead><tr><th scope="col">Group</th><th scope="col">Workspaces</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Signed up</th><td data-f="cleaning.workspaces_raw" data-fmt="int">552</td></tr>
+              <tr><th scope="row">Spam or phishing (removed)</th><td data-f="cleaning.spam_accounts" data-fmt="int">25</td></tr>
+              <tr><th scope="row">Internal QA (removed)</th><td data-f="cleaning.qa_accounts" data-fmt="int">9</td></tr>
+              <tr><th scope="row">Real practices analysed</th><td data-f="base.practices" data-fmt="int">518</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+      </article>
+
+      <!-- Beat 2 · The day-0 cliff -->
+      <article class="beat" aria-labelledby="b2-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">2</span>The day-0 cliff</p>
+          <h3 id="b2-title"><span data-f="dropoff.never_back_after_day0_pct" data-fmt="pct0">45%</span> of trials (<span data-f="dropoff.never_back_after_day0" data-fmt="int">235</span> of <span data-f="base.practices" data-fmt="int">518</span>) never came back after day 0. None of them paid.</h3>
+          <p>They did try the product: a median of <span data-f="dropoff.day0_leavers_median_events" data-fmt="d1">3</span> actions, mostly appointments, notes, templates and hand-added clients. <mark class="hl">Only <span data-f="dropoff.day0_leavers_used_scribe_booking_or_invoice" data-fmt="int">1</span> of <span data-f="dropoff.never_back_after_day0" data-fmt="int">235</span> used the scribe, took an online booking or sent an invoice.</mark></p>
+          <p>And they can't be told apart early. At the end of day 0, leavers look like practices that come back later: about <span data-f="return_timing.first_session_events_never_returned" data-fmt="int">3</span> actions, about <span data-f="return_timing.first_session_minutes_never_returned" data-fmt="r10">100</span> minutes, and no one has used the scribe yet.</p>
+          <p class="chip chip-high"><span class="chip-k">High</span> A large group with a zero conversion rate</p>
+        </div>
+        <figure class="panel" data-chart="retention" aria-labelledby="c2-title">
+          <figcaption class="panel-title" id="c2-title"><span data-f="dropoff.never_back_after_day0_pct" data-fmt="pct0">45%</span> of trials never come back after day 0</figcaption>
+          <div class="chart-plot"></div>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="base.practices" data-fmt="int">518</span> practices · share with any activity on or after each day, days 0–14</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Share of practices with any activity on or after each day</caption>
+            <thead><tr><th scope="col">Day</th><th scope="col">Active on or after</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">0</th><td data-f="dropoff.retention_curve_pct.0.pct_active_on_or_after" data-fmt="pct1">100.0%</td></tr>
+              <tr><th scope="row">1</th><td data-f="dropoff.retention_curve_pct.1.pct_active_on_or_after" data-fmt="pct1">54.6%</td></tr>
+              <tr><th scope="row">2</th><td data-f="dropoff.retention_curve_pct.2.pct_active_on_or_after" data-fmt="pct1">54.4%</td></tr>
+              <tr><th scope="row">3</th><td data-f="dropoff.retention_curve_pct.3.pct_active_on_or_after" data-fmt="pct1">53.7%</td></tr>
+              <tr><th scope="row">4</th><td data-f="dropoff.retention_curve_pct.4.pct_active_on_or_after" data-fmt="pct1">52.9%</td></tr>
+              <tr><th scope="row">5</th><td data-f="dropoff.retention_curve_pct.5.pct_active_on_or_after" data-fmt="pct1">51.2%</td></tr>
+              <tr><th scope="row">6</th><td data-f="dropoff.retention_curve_pct.6.pct_active_on_or_after" data-fmt="pct1">50.0%</td></tr>
+              <tr><th scope="row">7</th><td data-f="dropoff.retention_curve_pct.7.pct_active_on_or_after" data-fmt="pct1">48.3%</td></tr>
+              <tr><th scope="row">8</th><td data-f="dropoff.retention_curve_pct.8.pct_active_on_or_after" data-fmt="pct1">45.9%</td></tr>
+              <tr><th scope="row">9</th><td data-f="dropoff.retention_curve_pct.9.pct_active_on_or_after" data-fmt="pct1">42.9%</td></tr>
+              <tr><th scope="row">10</th><td data-f="dropoff.retention_curve_pct.10.pct_active_on_or_after" data-fmt="pct1">39.4%</td></tr>
+              <tr><th scope="row">11</th><td data-f="dropoff.retention_curve_pct.11.pct_active_on_or_after" data-fmt="pct1">35.9%</td></tr>
+              <tr><th scope="row">12</th><td data-f="dropoff.retention_curve_pct.12.pct_active_on_or_after" data-fmt="pct1">29.0%</td></tr>
+              <tr><th scope="row">13</th><td data-f="dropoff.retention_curve_pct.13.pct_active_on_or_after" data-fmt="pct1">23.2%</td></tr>
+              <tr><th scope="row">14</th><td data-f="dropoff.retention_curve_pct.14.pct_active_on_or_after" data-fmt="pct1">11.4%</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+      </article>
+
+      <!-- Beat 3 · Coming back early -->
+      <article class="beat" aria-labelledby="b3-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">3</span>Coming back early</p>
+          <h3 id="b3-title">Practices that came back on days 1–3 paid at <span data-f="dropoff.returned_day1to3.conversion_pct" data-fmt="pct0">30%</span>, against <span data-f="dropoff.not_returned_day1to3.conversion_pct" data-fmt="pct0">5%</span>.</h3>
+          <p>Among the <span data-f="early_window.practices_not_paid_by_day3" data-fmt="int">505</span> practices that hadn't paid by day 3, the <span data-f="dropoff.returned_day1to3.practices" data-fmt="int">110</span> that came back on days 1–3 paid at <span data-f="dropoff.returned_day1to3.conversion_pct" data-fmt="pct1">30.0%</span>; the <span data-f="dropoff.not_returned_day1to3.practices" data-fmt="int">395</span> that didn't, at <span data-f="dropoff.not_returned_day1to3.conversion_pct" data-fmt="pct1">4.6%</span>. <mark class="hl">Two-thirds of those later payers (<span data-f="dropoff.returned_day1to3.paid" data-fmt="int">33</span> of <span data-f="early_window.of_which_paid_later" data-fmt="int">51</span>) had come back in that window.</mark></p>
+          <p>It's partly circular: keen practices both come back and pay. But it sets the clock for a journey, because the typical practice first comes back after about <span data-f="return_timing.median_first_return_days" data-fmt="d1">2.6</span> days.</p>
+          <p class="chip chip-high"><span class="chip-k">High</span> that the link exists; partly circular</p>
+        </div>
+        <figure class="panel" data-chart="returnBars" aria-labelledby="c3-title">
+          <figcaption class="panel-title" id="c3-title">Came back on days 1–3: <span data-f="dropoff.returned_day1to3.conversion_pct" data-fmt="pct1">30.0%</span> paid. Didn't: <span data-f="dropoff.not_returned_day1to3.conversion_pct" data-fmt="pct1">4.6%</span>.</figcaption>
+          <div class="chart-plot"></div>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="early_window.practices_not_paid_by_day3" data-fmt="int">505</span> practices not yet paid by day 3 · lines show 95% intervals</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Paid within 30 days, by whether the practice came back on days 1–3</caption>
+            <thead><tr><th scope="col">Group</th><th scope="col">Practices</th><th scope="col">Paid</th><th scope="col">Paid rate</th><th scope="col">95% interval</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Came back on days 1–3</th><td data-f="dropoff.returned_day1to3.practices" data-fmt="int">110</td><td data-f="dropoff.returned_day1to3.paid" data-fmt="int">33</td><td data-f="dropoff.returned_day1to3.conversion_pct" data-fmt="pct1">30.0%</td><td data-f="dropoff.returned_day1to3.conversion_ci" data-fmt="ci">22.2–39.1%</td></tr>
+              <tr><th scope="row">Didn't</th><td data-f="dropoff.not_returned_day1to3.practices" data-fmt="int">395</td><td data-f="dropoff.not_returned_day1to3.paid" data-fmt="int">18</td><td data-f="dropoff.not_returned_day1to3.conversion_pct" data-fmt="pct1">4.6%</td><td data-f="dropoff.not_returned_day1to3.conversion_ci" data-fmt="ci">2.9–7.1%</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+      </article>
+
+      <!-- Beat 4 · Real work vs trying it out -->
+      <article class="beat beat-key" aria-labelledby="b4-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">4</span>Real work vs trying it out</p>
+          <h3 id="b4-title">Three actions still go with paying once activity is allowed for: the AI scribe, online bookings and invoices.</h3>
+          <p><span data-f="signals.client_booked_online.conversion_did_pct" data-fmt="pct1">33.9%</span> of practices that took an online booking paid, against <span data-f="signals.client_booked_online.conversion_not_pct" data-fmt="pct1">9.7%</span> of those that didn't. Invoices: <span data-f="signals.invoice_sent.conversion_did_pct" data-fmt="pct1">32.1%</span> against <span data-f="signals.invoice_sent.conversion_not_pct" data-fmt="pct1">10.0%</span>. The AI scribe: <span data-f="signals.ai_scribe_used.conversion_did_pct" data-fmt="pct1">21.8%</span> against <span data-f="signals.ai_scribe_used.conversion_not_pct" data-fmt="pct1">7.4%</span>. Taken one at a time, and allowing for how active a practice was, each goes with about <span data-f="signals.invoice_sent.adj_odds_ratio" data-fmt="or">2.4</span>–<span data-f="signals.client_booked_online.adj_odds_ratio" data-fmt="or">2.8</span> times the odds of paying.</p>
+          <p><mark class="hl">What they share is real client work: a real session written up, a real client booking in, a real bill going out.</mark> Notes, appointments and templates, done by <span data-f="signals.template_opened.share_of_trials_pct" data-fmt="int">68</span>–<span data-f="signals.appointment_created.share_of_trials_pct" data-fmt="pct0">75%</span> of trials, show no link to paying once activity is allowed for.</p>
+          <p class="chip chip-medium"><span class="chip-k">Medium</span> Holds in every check, but intervals are wide and it's borderline after multiple testing</p>
+        </div>
+        <figure class="panel" data-chart="signals" aria-labelledby="c4-title">
+          <figcaption class="panel-title" id="c4-title">For each of the three, practices that did it paid at <span class="nw"><span data-f="signals.ai_scribe_used.conversion_did_pct" data-fmt="int">22</span>–<span data-f="signals.client_booked_online.conversion_did_pct" data-fmt="pct0">34%</span></span>, against <span class="nw"><span data-f="signals.ai_scribe_used.conversion_not_pct" data-fmt="int">7</span>–<span data-f="signals.invoice_sent.conversion_not_pct" data-fmt="pct0">10%</span></span> for those that didn't</figcaption>
+          <ul class="legend" aria-hidden="true">
+            <li><span class="lg lg-did"></span>Did it</li>
+            <li><span class="lg lg-not"></span>Didn't</li>
+            <li><span class="lg lg-ci"></span>95% interval for practices that did it</li>
+            <li><span class="lg lg-ref"></span><span>All trials, <span data-f="base.conversion_pct" data-fmt="pct1">12.4%</span></span></li>
+          </ul>
+          <div class="chart-plot"></div>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="base.practices" data-fmt="int">518</span> practices · events in days 0–14 before payment · dots show raw paid rates; the grouping comes from a model that also counts how many days a practice was active</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Paid within 30 days, by whether the practice did each action in days 0–14 before paying</caption>
+            <thead><tr><th scope="col">Action</th><th scope="col">Practices that did it</th><th scope="col">Paid if did (95% interval)</th><th scope="col">Paid if didn't</th><th scope="col">Odds ratio, allowing for activity (95% interval)</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">A client booked online</th><td data-f="signals.client_booked_online.practices_did" data-fmt="int">56</td><td><span data-f="signals.client_booked_online.conversion_did_pct" data-fmt="pct1">33.9%</span> (<span data-f="signals.client_booked_online.conversion_did_ci" data-fmt="ci">22.9–47.0%</span>)</td><td data-f="signals.client_booked_online.conversion_not_pct" data-fmt="pct1">9.7%</td><td><span data-f="signals.client_booked_online.adj_odds_ratio" data-fmt="or">2.8</span> (<span data-f="signals.client_booked_online.adj_or_ci" data-fmt="cir">1.2–6.3</span>)</td></tr>
+              <tr><th scope="row">Sent an invoice</th><td data-f="signals.invoice_sent.practices_did" data-fmt="int">56</td><td><span data-f="signals.invoice_sent.conversion_did_pct" data-fmt="pct1">32.1%</span> (<span data-f="signals.invoice_sent.conversion_did_ci" data-fmt="ci">21.4–45.2%</span>)</td><td data-f="signals.invoice_sent.conversion_not_pct" data-fmt="pct1">10.0%</td><td><span data-f="signals.invoice_sent.adj_odds_ratio" data-fmt="or">2.4</span> (<span data-f="signals.invoice_sent.adj_or_ci" data-fmt="cir">1.1–5.3</span>)</td></tr>
+              <tr><th scope="row">Used the AI scribe</th><td data-f="signals.ai_scribe_used.practices_did" data-fmt="int">179</td><td><span data-f="signals.ai_scribe_used.conversion_did_pct" data-fmt="pct1">21.8%</span> (<span data-f="signals.ai_scribe_used.conversion_did_ci" data-fmt="ci">16.4–28.4%</span>)</td><td data-f="signals.ai_scribe_used.conversion_not_pct" data-fmt="pct1">7.4%</td><td><span data-f="signals.ai_scribe_used.adj_odds_ratio" data-fmt="or">2.4</span> (<span data-f="signals.ai_scribe_used.adj_or_ci" data-fmt="cir">1.1–5.4</span>)</td></tr>
+              <tr><th scope="row">Ran a video call</th><td data-f="signals.video_call_started.practices_did" data-fmt="int">51</td><td><span data-f="signals.video_call_started.conversion_did_pct" data-fmt="pct1">31.4%</span> (<span data-f="signals.video_call_started.conversion_did_ci" data-fmt="ci">20.3–45.0%</span>)</td><td data-f="signals.video_call_started.conversion_not_pct" data-fmt="pct1">10.3%</td><td><span data-f="signals.video_call_started.adj_odds_ratio" data-fmt="or">2.0</span> (<span data-f="signals.video_call_started.adj_or_ci" data-fmt="cir">0.85–4.6</span>)</td></tr>
+              <tr><th scope="row">Imported clients</th><td data-f="signals.client_created_import.practices_did" data-fmt="int">71</td><td><span data-f="signals.client_created_import.conversion_did_pct" data-fmt="pct1">28.2%</span> (<span data-f="signals.client_created_import.conversion_did_ci" data-fmt="ci">19.0–39.5%</span>)</td><td data-f="signals.client_created_import.conversion_not_pct" data-fmt="pct1">9.8%</td><td><span data-f="signals.client_created_import.adj_odds_ratio" data-fmt="or">1.8</span> (<span data-f="signals.client_created_import.adj_or_ci" data-fmt="cir">0.77–4.2</span>)</td></tr>
+              <tr><th scope="row">Sent an intake form</th><td data-f="signals.intake_form_sent.practices_did" data-fmt="int">120</td><td><span data-f="signals.intake_form_sent.conversion_did_pct" data-fmt="pct1">19.2%</span> (<span data-f="signals.intake_form_sent.conversion_did_ci" data-fmt="ci">13.1–27.1%</span>)</td><td data-f="signals.intake_form_sent.conversion_not_pct" data-fmt="pct1">10.3%</td><td><span data-f="signals.intake_form_sent.adj_odds_ratio" data-fmt="or">1.5</span> (<span data-f="signals.intake_form_sent.adj_or_ci" data-fmt="cir">0.82–2.7</span>)</td></tr>
+              <tr><th scope="row">Sent a portal invite</th><td data-f="signals.client_portal_invite_sent.practices_did" data-fmt="int">128</td><td><span data-f="signals.client_portal_invite_sent.conversion_did_pct" data-fmt="pct1">18.8%</span> (<span data-f="signals.client_portal_invite_sent.conversion_did_ci" data-fmt="ci">12.9–26.4%</span>)</td><td data-f="signals.client_portal_invite_sent.conversion_not_pct" data-fmt="pct1">10.3%</td><td><span data-f="signals.client_portal_invite_sent.adj_odds_ratio" data-fmt="or">1.3</span> (<span data-f="signals.client_portal_invite_sent.adj_or_ci" data-fmt="cir">0.71–2.4</span>)</td></tr>
+              <tr><th scope="row">Added a client by hand</th><td data-f="signals.client_created_manual.practices_did" data-fmt="int">281</td><td><span data-f="signals.client_created_manual.conversion_did_pct" data-fmt="pct1">15.3%</span> (<span data-f="signals.client_created_manual.conversion_did_ci" data-fmt="ci">11.6–20.0%</span>)</td><td data-f="signals.client_created_manual.conversion_not_pct" data-fmt="pct1">8.9%</td><td><span data-f="signals.client_created_manual.adj_odds_ratio" data-fmt="or">1.4</span> (<span data-f="signals.client_created_manual.adj_or_ci" data-fmt="cir">0.8–2.6</span>)</td></tr>
+              <tr><th scope="row">Opened a template</th><td data-f="signals.template_opened.practices_did" data-fmt="int">352</td><td><span data-f="signals.template_opened.conversion_did_pct" data-fmt="pct1">14.2%</span> (<span data-f="signals.template_opened.conversion_did_ci" data-fmt="ci">10.9–18.2%</span>)</td><td data-f="signals.template_opened.conversion_not_pct" data-fmt="pct1">8.4%</td><td><span data-f="signals.template_opened.adj_odds_ratio" data-fmt="or">1.1</span> (<span data-f="signals.template_opened.adj_or_ci" data-fmt="cir">0.54–2.2</span>)</td></tr>
+              <tr><th scope="row">Created an appointment</th><td data-f="signals.appointment_created.practices_did" data-fmt="int">387</td><td><span data-f="signals.appointment_created.conversion_did_pct" data-fmt="pct1">13.4%</span> (<span data-f="signals.appointment_created.conversion_did_ci" data-fmt="ci">10.4–17.2%</span>)</td><td data-f="signals.appointment_created.conversion_not_pct" data-fmt="pct1">9.2%</td><td><span data-f="signals.appointment_created.adj_odds_ratio" data-fmt="or">0.93</span> (<span data-f="signals.appointment_created.adj_or_ci" data-fmt="cir">0.45–1.9</span>)</td></tr>
+              <tr><th scope="row">Wrote a note</th><td data-f="signals.note_created.practices_did" data-fmt="int">365</td><td><span data-f="signals.note_created.conversion_did_pct" data-fmt="pct1">13.4%</span> (<span data-f="signals.note_created.conversion_did_ci" data-fmt="ci">10.3–17.3%</span>)</td><td data-f="signals.note_created.conversion_not_pct" data-fmt="pct1">9.8%</td><td><span data-f="signals.note_created.adj_odds_ratio" data-fmt="or">0.89</span> (<span data-f="signals.note_created.adj_or_ci" data-fmt="cir">0.45–1.7</span>)</td></tr>
+              <tr><th scope="row">Reminder sent to a client</th><td data-f="signals.appointment_reminder_sent.practices_did" data-fmt="int">68</td><td><span data-f="signals.appointment_reminder_sent.conversion_did_pct" data-fmt="pct1">8.8%</span> (<span data-f="signals.appointment_reminder_sent.conversion_did_ci" data-fmt="ci">4.1–17.9%</span>)</td><td data-f="signals.appointment_reminder_sent.conversion_not_pct" data-fmt="pct1">12.9%</td><td><span data-f="signals.appointment_reminder_sent.adj_odds_ratio" data-fmt="or">0.74</span> (<span data-f="signals.appointment_reminder_sent.adj_or_ci" data-fmt="cir">0.3–1.8</span>)</td></tr>
+              <tr><th scope="row">Invited a team member</th><td data-f="signals.staff_invited.practices_did" data-fmt="int">32</td><td><span data-f="signals.staff_invited.conversion_did_pct" data-fmt="pct1">6.2%</span> (<span data-f="signals.staff_invited.conversion_did_ci" data-fmt="ci">1.7–20.1%</span>)</td><td data-f="signals.staff_invited.conversion_not_pct" data-fmt="pct1">12.8%</td><td><span data-f="signals.staff_invited.adj_odds_ratio" data-fmt="or">0.38</span> (<span data-f="signals.staff_invited.adj_or_ci" data-fmt="cir">0.09–1.7</span>)</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+      </article>
+
+      <!-- Beat 5 · They add up -->
+      <article class="beat beat-key" aria-labelledby="b5-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">5</span>They add up</p>
+          <h3 id="b5-title">The more of the three a practice did, the higher its paid rate.</h3>
+          <p>None: <span data-f="dose_response.0.conversion_pct" data-fmt="pct1">7.3%</span>. One: <span data-f="dose_response.1.conversion_pct" data-fmt="pct1">12.7%</span>. Two: <span data-f="dose_response.2.conversion_pct" data-fmt="pct1">27.3%</span>. All three: <span data-f="dose_response.3.conversion_pct" data-fmt="pct1">47.4%</span>, though only <span data-f="dose_response.3.practices" data-fmt="int">19</span> practices did all three.</p>
+          <p>Practices doing any of the three paid at <span data-f="any_key_action.conversion_pct" data-fmt="pct1">21.4%</span>, <mark class="hl">about three times the rate</mark> of those doing none (<span data-f="no_key_action.conversion_pct" data-fmt="pct1">7.3%</span>).</p>
+          <p class="chip chip-medium"><span class="chip-k">Medium</span> Wide intervals, especially for all three</p>
+        </div>
+        <figure class="panel" data-chart="dose" aria-labelledby="c5-title">
+          <figcaption class="panel-title" id="c5-title"><span data-f="dose_response.0.conversion_pct" data-fmt="pct1">7.3%</span> paid with none of the three key actions; <span data-f="dose_response.3.conversion_pct" data-fmt="pct1">47.4%</span> with all three</figcaption>
+          <div class="chart-plot"></div>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="base.practices" data-fmt="int">518</span> practices · events in days 0–14 before payment · raw rates, not adjusted for activity · lines show 95% intervals</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Paid within 30 days, by how many of the three key actions a practice did</caption>
+            <thead><tr><th scope="col">Key actions done</th><th scope="col">Practices</th><th scope="col">Paid</th><th scope="col">Paid rate</th><th scope="col">95% interval</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">None</th><td data-f="dose_response.0.practices" data-fmt="int">331</td><td data-f="dose_response.0.paid" data-fmt="int">24</td><td data-f="dose_response.0.conversion_pct" data-fmt="pct1">7.3%</td><td data-f="dose_response.0.conversion_ci" data-fmt="ci">4.9–10.6%</td></tr>
+              <tr><th scope="row">One</th><td data-f="dose_response.1.practices" data-fmt="int">102</td><td data-f="dose_response.1.paid" data-fmt="int">13</td><td data-f="dose_response.1.conversion_pct" data-fmt="pct1">12.7%</td><td data-f="dose_response.1.conversion_ci" data-fmt="ci">7.6–20.6%</td></tr>
+              <tr><th scope="row">Two</th><td data-f="dose_response.2.practices" data-fmt="int">66</td><td data-f="dose_response.2.paid" data-fmt="int">18</td><td data-f="dose_response.2.conversion_pct" data-fmt="pct1">27.3%</td><td data-f="dose_response.2.conversion_ci" data-fmt="ci">18.0–39.0%</td></tr>
+              <tr><th scope="row">All three</th><td data-f="dose_response.3.practices" data-fmt="int">19</td><td data-f="dose_response.3.paid" data-fmt="int">9</td><td data-f="dose_response.3.conversion_pct" data-fmt="pct1">47.4%</td><td data-f="dose_response.3.conversion_ci" data-fmt="ci">27.3–68.3%</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+      </article>
+
+      <!-- Beat 6 · What this doesn't explain -->
+      <article class="beat beat-limits" aria-labelledby="b6-title">
+        <div class="beat-text">
+          <p class="beat-label"><span class="n">6</span>What this doesn't explain</p>
+          <h3 id="b6-title">The pattern has limits, and none of it proves cause.</h3>
+        </div>
+        <div class="limits">
+          <figure class="limit" data-chart="payerDots" data-variant="decided" aria-labelledby="l1-title">
+            <h4 id="l1-title">Some payers arrived already decided</h4>
+            <div class="chart-plot"></div>
+            <ul class="legend legend-sm" aria-hidden="true">
+              <li><span class="lg lg-key"></span>Did one of the three first</li>
+              <li><span class="lg lg-grey"></span>Did none</li>
+            </ul>
+            <p><span data-f="caveats.payers_without_key_actions" data-fmt="int">24</span> of <span data-f="base.paid" data-fmt="int">64</span> payers did none of the three before paying. They paid fast: median day <span data-f="caveats.payers_without_key_actions_median_pay_day" data-fmt="d1">3</span>, against day <span data-f="caveats.payers_with_key_actions_median_pay_day" data-fmt="d1">15.2</span> for other payers.</p>
+          </figure>
+          <figure class="limit" data-chart="payerDots" data-variant="late" aria-labelledby="l2-title">
+            <h4 id="l2-title">Many paid after the trial</h4>
+            <div class="chart-plot"></div>
+            <ul class="legend legend-sm" aria-hidden="true">
+              <li><span class="lg lg-ink"></span>Paid after day 14</li>
+              <li><span class="lg lg-grey"></span>Paid by day 14</li>
+            </ul>
+            <p><span data-f="caveats.payers_paid_after_day14" data-fmt="int">20</span> of <span data-f="base.paid" data-fmt="int">64</span> payers paid after day 14, so the 14-day window doesn't see everything that happened before they decided.</p>
+          </figure>
+          <figure class="limit" data-chart="countryBars" aria-labelledby="l3-title">
+            <h4 id="l3-title">The UK and Canada barely convert</h4>
+            <div class="chart-plot"></div>
+            <p>UK and Canadian practices paid at about <span data-f="caveats.country.GB.conversion_pct" data-fmt="pct0">2%</span> (<span data-f="caveats.country.GB.paid" data-fmt="int">1</span> of <span data-f="caveats.country.GB.practices" data-fmt="int">48</span>; <span data-f="caveats.country.CA.paid" data-fmt="int">1</span> of <span data-f="caveats.country.CA.practices" data-fmt="int">45</span>), against <span data-f="caveats.country.US.conversion_pct" data-fmt="pct1">15.4%</span> in the US, though UK practices used the scribe more (<span data-f="caveats.country.GB.scribe_use_pct" data-fmt="pct1">39.6%</span> vs <span data-f="caveats.country.US.scribe_use_pct" data-fmt="pct1">35.6%</span>). None of the <span data-f="caveats.gb_ca_viewed_billing" data-fmt="int">7</span> UK and Canadian practices that opened the billing page paid, against <span data-f="caveats.us_billing_viewer_conversion_pct" data-fmt="pct1">43.2%</span> in the US. That points to pricing or checkout, but it's far too few to conclude.</p>
+            <p class="chip chip-low"><span class="chip-k">Low</span> that the gap is about pricing or checkout</p>
+            <div class="chart-table-wrap"><table class="chart-table">
+              <caption>Paid within 30 days, by country</caption>
+              <thead><tr><th scope="col">Country</th><th scope="col">Practices</th><th scope="col">Paid</th><th scope="col">Paid rate</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">US</th><td data-f="caveats.country.US.practices" data-fmt="int">357</td><td data-f="caveats.country.US.paid" data-fmt="int">55</td><td data-f="caveats.country.US.conversion_pct" data-fmt="pct1">15.4%</td></tr>
+                <tr><th scope="row">Australia</th><td data-f="caveats.country.AU.practices" data-fmt="int">68</td><td data-f="caveats.country.AU.paid" data-fmt="int">7</td><td data-f="caveats.country.AU.conversion_pct" data-fmt="pct1">10.3%</td></tr>
+                <tr><th scope="row">UK</th><td data-f="caveats.country.GB.practices" data-fmt="int">48</td><td data-f="caveats.country.GB.paid" data-fmt="int">1</td><td data-f="caveats.country.GB.conversion_pct" data-fmt="pct1">2.1%</td></tr>
+                <tr><th scope="row">Canada</th><td data-f="caveats.country.CA.practices" data-fmt="int">45</td><td data-f="caveats.country.CA.paid" data-fmt="int">1</td><td data-f="caveats.country.CA.conversion_pct" data-fmt="pct1">2.2%</td></tr>
+              </tbody>
+            </table></div>
+          </figure>
+        </div>
+        <aside class="caveat-note" aria-label="Correlation, not cause">
+          <p><strong>All of this is correlation, not cause.</strong> Practices with real clients can book and invoice; ones without can't, so these actions partly mark practices that were always going to pay. Only a holdout test shows how much a journey can change.</p>
+        </aside>
+      </article>
+
+      <!-- Confidence -->
+      <div class="confidence" aria-labelledby="conf-title">
+        <h3 id="conf-title">How confident I am</h3>
+        <ul class="conf-list">
+          <li><span class="conf-f"><span data-f="cleaning.removed_total" data-fmt="int">34</span> workspaces are spam or QA and must be removed</span><span class="chip chip-high"><span class="chip-k">High</span></span></li>
+          <li><span class="conf-f"><span data-f="dropoff.never_back_after_day0_pct" data-fmt="pct0">45%</span> never return after day 0, and none pay</span><span class="chip chip-high"><span class="chip-k">High</span></span></li>
+          <li><span class="conf-f">Returning on days 1–3 goes with paying (<span data-f="dropoff.returned_day1to3.conversion_pct" data-fmt="pct0">30%</span> vs <span data-f="dropoff.not_returned_day1to3.conversion_pct" data-fmt="pct0">5%</span>)</span><span class="chip chip-high"><span class="chip-k">High</span> that the link exists; partly circular</span></li>
+          <li><span class="conf-f">Notes, appointments and templates don't separate payers</span><span class="chip chip-high"><span class="chip-k">High</span></span></li>
+          <li><span class="conf-f">AI scribe, online bookings and invoices go with paying</span><span class="chip chip-medium"><span class="chip-k">Medium</span> holds in every check, but intervals are wide and it is borderline once multiple testing is allowed for</span></li>
+          <li><span class="conf-f">Importing matters on its own</span><span class="chip chip-low"><span class="chip-k">Low</span></span></li>
+          <li><span class="conf-f">The GB/Canada gap is about pricing or checkout</span><span class="chip chip-low"><span class="chip-k">Low</span></span></li>
+        </ul>
+        <details class="checked">
+          <summary>How I checked</summary>
+          <div class="prose">
+            <p>The three actions show a clear gap in July and August separately: for example, scribe users paid at <span data-f="robustness.month_split.July.ai_scribe_used.did_pct" data-fmt="pct1">19.8%</span> vs <span data-f="robustness.month_split.July.ai_scribe_used.not_pct" data-fmt="pct1">8.7%</span> in July, and <span data-f="robustness.month_split.August.ai_scribe_used.did_pct" data-fmt="pct1">23.7%</span> vs <span data-f="robustness.month_split.August.ai_scribe_used.not_pct" data-fmt="pct1">5.8%</span> in August.</p>
+            <p>With duplicate sign-ups collapsed, or the <span data-f="caveats.payers_paid_within_24h" data-fmt="int">7</span> practices that paid within 24 hours removed, the odds ratios for the three stay at <span data-f="robustness.dedupe_re_signups.odds_ratios.ai_scribe_used" data-fmt="or">2.6</span>–<span data-f="robustness.drop_paid_within_24h.odds_ratios.ai_scribe_used" data-fmt="or">3.3</span> (all p &lt; 0.03).</p>
+            <p>Rates come with 95% Wilson intervals. "Allowing for activity" means a logistic regression that also includes how many distinct days a practice was active.</p>
+          </div>
+        </details>
+        <p class="more"><a href="https://claude.ai/artifact/G2PHeDeCCJq1HhGjfqePUR#4195a840-f5fd" rel="noopener">Read the full findings doc</a>, with method notes and every check.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ 02 JOURNEY -->
+  <section class="section band-mint" id="journey" data-band="light" aria-labelledby="journey-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow"><span class="n">02</span><span class="visually-hidden"> · </span>Design one journey</p>
+        <h2 id="journey-title">One entry point. Every step after it waits for what the practice does.</h2>
+        <p class="lead">Give every new practice that hasn't come back a reason to return by day 4, and <mark class="hl">make that reason a piece of real client work.</mark></p>
+      </header>
+
+      <div class="journey">
+        <!-- Visual map of the steps listed alongside; the list carries the full content. -->
+        <div class="jmap-wrap" aria-hidden="true">
+          <div class="jmap" data-jmap>
+            <div class="jnode" data-node="entry" style="grid-area: entry"><span class="tag">Entry · 24 hours after sign-up</span><span class="t">Hasn't come back</span></div>
+            <div class="jnode jnode-hold" data-node="hold" style="grid-area: hold"><span class="tag">Holdout</span><span class="t">Standard onboarding only</span></div>
+            <div class="jnode" data-node="email1" style="grid-area: email1"><span class="tag">Email 1</span><span class="t">Your next session, written up for you</span></div>
+            <div class="jnode" data-node="inapp" style="grid-area: inapp"><span class="tag">In-app</span><span class="t">One card, not a checklist</span></div>
+            <div class="jnode" data-node="email3" style="grid-area: email3"><span class="tag">Email 3 · day 4</span><span class="t">A note from a named person</span></div>
+            <div class="jnode" data-node="email2" style="grid-area: email2"><span class="tag">Email 2 · next morning</span><span class="t">Let clients book themselves</span></div>
+            <div class="jnode jnode-exit" data-node="exit" style="grid-area: exit"><span class="tag">Exit as success</span><span class="t">Books online or invoices</span></div>
+            <p class="jnode-other" style="grid-area: other">Other exits: pays, unsubscribes, spam rule, day 14</p>
+          </div>
+        </div>
+
+        <ol class="jsteps">
+          <li class="jstep" data-step="entry">
+            <p class="when">Entry · 24 hours after sign-up</p>
+            <h3>Everyone who hasn't come back</h3>
+            <p>Hasn't come back, hasn't used the scribe, taken a booking or sent an invoice, hasn't paid, and isn't flagged by the spam rule: about <span data-f="journey.entrants_pct_of_trials" data-fmt="pct0">85%</span> of new trials (<span data-f="journey.entrants" data-fmt="int">438</span> of <span data-f="base.practices" data-fmt="int">518</span>).</p>
+            <p>At the end of day 0, leavers look just like practices that come back later, so the entry doesn't try to pick them out. Half go to a holdout group that gets standard onboarding only.</p>
+          </li>
+          <li class="jstep" data-step="email1">
+            <p class="when">Email 1 · on entry</p>
+            <h3>“Your next session, written up for you.”</h3>
+            <p>Turn on the AI scribe in your next session, or try it on a 2-minute sample recording. <a href="#message">Read the email</a></p>
+          </li>
+          <li class="jstep" data-step="inapp">
+            <p class="when">In-app · when they log back in</p>
+            <h3>One card, not a checklist</h3>
+            <p>Scribe not used yet: “Record your next session”. Already used: “Share your booking link”.</p>
+          </li>
+          <li class="jstep" data-step="email2">
+            <p class="when">Email 2 · the morning after first scribe use</p>
+            <h3>“Let clients book themselves.”</h3>
+            <p>Links to Open Slot, the booking-link kit: wording for a directory profile, email signature and bio, plus a printable QR card. <a href="#ship">See Open Slot</a></p>
+            <p class="who">For practices that used the scribe but haven't had an online booking.</p>
+          </li>
+          <li class="jstep" data-step="email3">
+            <p class="when">Email 3 · still no return at day 4</p>
+            <h3>A plain-text note from a named person</h3>
+            <p>“Is anything stopping you from trying it on one session this week?” Replies go to a real inbox.</p>
+          </li>
+          <li class="jstep jstep-exit" data-step="exit">
+            <p class="when">Exit · a client books online or an invoice is sent</p>
+            <h3>Exit as success</h3>
+            <p>Standard onboarding carries on. Other exits: pays, unsubscribes, trips the spam rule, or reaches day 14.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="jwhy">
+        <div class="jwhy-card">
+          <h3>Why the scribe comes first</h3>
+          <ul>
+            <li><strong><span data-f="signals.ai_scribe_used.practices_did" data-fmt="int">179</span> practices used it</strong> (<span data-f="signals.ai_scribe_used.share_of_trials_pct" data-fmt="pct0">35%</span> of trials), three times as many as booked online or invoiced.</li>
+            <li><strong>It shows early.</strong> Among practices not yet paid by day 3, those that had used it by then paid at <span data-f="early_window.ai_scribe_used.conversion_did_pct" data-fmt="pct1">29.0%</span>, against <span data-f="early_window.ai_scribe_used.conversion_not_pct" data-fmt="pct1">7.1%</span>.</li>
+            <li><strong>No one used it in their first session,</strong> which makes it a natural reason to come back.</li>
+          </ul>
+        </div>
+        <div class="jwhy-card">
+          <h3>Why day 4 is the last nudge</h3>
+          <ul>
+            <li><strong>Practices whose first return came 20 to 96 hours after sign-up paid at <span data-f="return_timing.first_return_20_96h.conversion_pct" data-fmt="pct0">33%</span>.</strong> Those that first came back after day 4 paid at <span data-f="return_timing.first_return_after_96h.conversion_pct" data-fmt="pct0">8%</span>, so later emails mostly add noise.</li>
+            <li><strong>The typical practice first comes back after about <span data-f="return_timing.median_first_return_days" data-fmt="d1">2.6</span> days.</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="measure">
+        <div class="measure-head">
+          <h3>How we'd know it worked</h3>
+          <p>Randomise at entry and compare against the holdout. The findings are correlational, so only a holdout shows how much of the gap the journey actually closes.</p>
+        </div>
+        <div class="measure-grid">
+          <div class="mcard mcard-primary">
+            <p class="role">Primary · decide on this</p>
+            <p class="m">Used the scribe, took an online booking or sent an invoice by day 7</p>
+            <p class="base" data-f="journey.baseline_key_action_by_day7_pct" data-fmt="pct1">25.6%</p>
+            <p class="base-l">baseline in this data</p>
+          </div>
+          <div class="mcard">
+            <p class="role">Secondary · did the reason to return land?</p>
+            <p class="m">Came back by day 4</p>
+            <p class="base" data-f="journey.baseline_return_by_day4_pct" data-fmt="pct1">25.8%</p>
+            <p class="base-l">baseline in this data</p>
+          </div>
+          <div class="mcard">
+            <p class="role">Secondary · the business outcome</p>
+            <p class="m">Paid within 30 days</p>
+            <p class="base" data-f="journey.baseline_paid_pct" data-fmt="pct1">9.6%</p>
+            <p class="base-l">baseline in this data</p>
+          </div>
+          <div class="mcard mcard-guard">
+            <p class="role">Guardrails</p>
+            <p class="m">Unsubscribes, spam complaints, consent-related support tickets</p>
+            <p class="base-l">Baselines set before launch</p>
+          </div>
+        </div>
+
+        <div class="sizing">
+          <div class="sizing-text">
+            <p>With a 50/50 holdout, about <span data-f="journey.sample_size.primary_plus8pts_50_50" data-fmt="r100">1,000</span> entrants detect a rise of 8 points (80% power, 5% significance) on the primary measure: about <span data-f="journey.months_at_dataset_volume.primary_plus8pts_50_50" data-fmt="d1">4.6</span> months at this dataset's volume of about <span data-f="journey.entrants_per_month" data-fmt="int">219</span> entrants a month. About <span data-f="journey.sample_size.paid_plus3pts_50_50" data-fmt="r100">3,400</span> detect 3 points on paid. An 80/20 split would need about <span data-f="journey.sample_size.primary_plus8pts_80_20" data-fmt="r100">1,600</span> (<span data-f="journey.months_at_dataset_volume.primary_plus8pts_80_20" data-fmt="d1">7.3</span> months).</p>
+            <p class="rule"><strong>Decision rule.</strong> Keep it if the primary measure rises by 5 points or more and its 95% interval excludes zero, with the guardrails flat.</p>
+          </div>
+          <figure class="panel panel-compact" data-chart="splitMonths" aria-labelledby="c7-title">
+            <figcaption class="panel-title" id="c7-title">Months to read the primary measure: <span data-f="journey.months_at_dataset_volume.primary_plus8pts_50_50" data-fmt="d1">4.6</span> with a 50/50 split, <span data-f="journey.months_at_dataset_volume.primary_plus8pts_80_20" data-fmt="d1">7.3</span> with 80/20</figcaption>
+            <div class="chart-plot"></div>
+            <p class="panel-source">Sized for 80% power at 5% significance to detect a rise of 8 points from a <span data-f="journey.baseline_key_action_by_day7_pct" data-fmt="pct1">25.6%</span> baseline · about <span data-f="journey.entrants_per_month" data-fmt="int">219</span> entrants a month in this data</p>
+            <div class="chart-table-wrap"><table class="chart-table">
+              <caption>Entrants and months needed to read the primary measure</caption>
+              <thead><tr><th scope="col">Split</th><th scope="col">Entrants</th><th scope="col">Months</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">50/50</th><td data-f="journey.sample_size.primary_plus8pts_50_50" data-fmt="int,">1,017</td><td data-f="journey.months_at_dataset_volume.primary_plus8pts_50_50" data-fmt="d1">4.6</td></tr>
+                <tr><th scope="row">80/20</th><td data-f="journey.sample_size.primary_plus8pts_80_20" data-fmt="int,">1,590</td><td data-f="journey.months_at_dataset_volume.primary_plus8pts_80_20" data-fmt="d1">7.3</td></tr>
+              </tbody>
+            </table></div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="leaves">
+        <h3>What it leaves out, on purpose</h3>
+        <ul class="leaves-list">
+          <li><strong>Practices that come back but stay shallow.</strong> They only get the in-app card here. They're the next journey I'd build.</li>
+          <li><strong>Practices that arrive already decided.</strong> <span data-f="caveats.payers_without_key_actions" data-fmt="int">24</span> of <span data-f="base.paid" data-fmt="int">64</span> payers paid without the key actions. The journey exits them at payment and doesn't try to speed them up.</li>
+          <li><strong>UK and Canadian practices.</strong> Their gap looks like pricing or checkout, which no email fixes.</li>
+          <li><strong>Separate journeys for each feature.</strong> One entry point with one holdout keeps the result readable.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ 03 MESSAGE -->
+  <section class="section band-dark" id="message" data-band="dark" aria-labelledby="message-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow"><span class="n">03</span><span class="visually-hidden"> · </span>Write one message</p>
+        <h2 id="message-title">Written for the ten minutes between clients.</h2>
+        <p class="lead">Email 1 from the journey, for a solo therapist reading on their phone between sessions: one idea, one button, about 80 words.</p>
+      </header>
+
+      <div class="message">
+        <div class="msg-controls">
+          <fieldset class="seg-field">
+            <legend>Subject lines to test</legend>
+            <div class="seg">
+              <label><input type="radio" name="subject" id="subj-a" value="a" checked><span>Subject A</span></label>
+              <label><input type="radio" name="subject" id="subj-b" value="b"><span>Subject B</span></label>
+            </div>
+          </fieldset>
+          <div class="inbox-row">
+            <span class="avatar" aria-hidden="true">A</span>
+            <div class="ir-text">
+              <p class="ir-top"><strong>Andre, Carepatron</strong><span class="ir-time">9:50</span></p>
+              <p class="ir-subj"><span class="subj-swap"><span class="subj subj-a">Your next session, written up for you</span><span class="subj subj-b">Skip tonight's notes</span></span></p>
+              <p class="ir-prev">Press record, then edit a draft instead of starting from a blank page.</p>
+            </div>
+          </div>
+          <p class="ir-note">How it lands in the inbox: subject and preview text.</p>
+        </div>
+
+        <figure class="phone" data-intro="phone" aria-label="Email 1, shown as it would appear on a phone">
+          <div class="phone-screen">
+            <div class="ph-status" aria-hidden="true"><span>9:50</span><span class="ph-icons"><i></i><i></i><i></i></span></div>
+            <div class="ph-bar" aria-hidden="true">‹ Inbox</div>
+            <div class="ph-mail">
+              <h3 class="ph-subj"><span class="subj-swap"><span class="subj subj-a">Your next session, written up for you</span><span class="subj subj-b">Skip tonight's notes</span></span></h3>
+              <div class="ph-from">
+                <span class="avatar" aria-hidden="true">A</span>
+                <p><strong>Andre, Carepatron</strong> <span class="ann" data-ann="1" aria-hidden="true">1</span><br><span class="ph-to">to me · 9:50</span></p>
+              </div>
+              <div class="ph-body">
+                <p>Hi <code class="mf">{first_name}</code>,</p>
+                <p>You set up <code class="mf">{practice_name}</code> yesterday. Here's <mark class="em" data-ann="2">one thing worth trying</mark> <span class="ann" data-ann="2" aria-hidden="true">2</span> before your week fills up.</p>
+                <p>In your next session, <mark class="em" data-ann="3">get your client's OK</mark> <span class="ann" data-ann="3" aria-hidden="true">3</span> and turn on the AI scribe. When you finish, a draft progress note is waiting. You check it, tweak it and sign it, instead of writing it from scratch <mark class="em" data-ann="4">at 9pm</mark>. <span class="ann" data-ann="4" aria-hidden="true">4</span></p>
+                <p>No session today? Try it on a <mark class="em" data-ann="5">2-minute sample recording</mark>. <span class="ann" data-ann="5" aria-hidden="true">5</span></p>
+                <p class="ph-cta"><span class="ph-btn">Try it on my next session</span> <span class="ann" data-ann="6" aria-hidden="true">6</span></p>
+                <p>Andre, Carepatron</p>
+                <p class="ph-ps">P.S. Your trial runs until <code class="mf">{trial_end_date}</code>.</p>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <ol class="annotations" aria-label="Choices behind the email">
+          <li data-ann="1"><span class="ann-n" aria-hidden="true">1</span><div><h3>From a named person, in plain text</h3><p>Sent at 10 minutes to the hour in the practice's local time, when a session has just ended. The sign-off is a stand-in; a real send would come from Carepatron's onboarding lead.</p></div></li>
+          <li data-ann="2"><span class="ann-n" aria-hidden="true">2</span><div><h3>No unsupported claims</h3><p>About a third of trials used the scribe, so the email doesn't say “most therapists” do.</p></div></li>
+          <li data-ann="3"><span class="ann-n" aria-hidden="true">3</span><div><h3>“Get your client's OK”</h3><p>Recording a therapy session needs consent, and therapists know it. Saying so first builds trust; skipping it would read as careless.</p></div></li>
+          <li data-ann="4"><span class="ann-n" aria-hidden="true">4</span><div><h3>“At 9pm”</h3><p>Late-night notes are the pain a solo therapist feels, so that's the benefit to lead with, not “AI”.</p></div></li>
+          <li data-ann="5"><span class="ann-n" aria-hidden="true">5</span><div><h3>The sample recording</h3><p>It removes the “no session today” excuse, so anyone can see the result within minutes.</p></div></li>
+          <li data-ann="6"><span class="ann-n" aria-hidden="true">6</span><div><h3>One action</h3><p>The button opens the scribe ready to record, not a dashboard.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ 04 SHIP -->
+  <section class="section band-sky" id="ship" data-band="light" aria-labelledby="ship-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow"><span class="n">04</span><span class="visually-hidden"> · </span>Ship something</p>
+        <h2 id="ship-title">Only <span data-f="signals.client_booked_online.share_of_trials_pct" data-fmt="pct0">11%</span> of trials got an online booking in their first two weeks. Open Slot puts the booking link where new clients look.</h2>
+      </header>
+
+      <!-- The problem -->
+      <div class="ship-problem">
+        <figure class="panel panel-key" data-chart="bookingDots" aria-labelledby="c8-title">
+          <figcaption class="panel-title" id="c8-title"><span data-f="signals.client_booked_online.practices_did" data-fmt="int">56</span> of <span data-f="base.practices" data-fmt="int">518</span> trials (<span data-f="signals.client_booked_online.share_of_trials_pct" data-fmt="pct0">11%</span>) had a client book online in their first 14 days</figcaption>
+          <div class="chart-plot"></div>
+          <ul class="legend" aria-hidden="true">
+            <li><span class="lg lg-key"></span>A client booked online</li>
+            <li><span class="lg lg-soft"></span>Never did</li>
+          </ul>
+          <p class="panel-source">Carepatron sample data (fictional) · <span data-f="base.practices" data-fmt="int">518</span> practices · events in days 0–14 before payment</p>
+          <div class="chart-table-wrap"><table class="chart-table">
+            <caption>Trials where a client booked online</caption>
+            <thead><tr><th scope="col">Group</th><th scope="col">Practices</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">All trials</th><td data-f="base.practices" data-fmt="int">518</td></tr>
+              <tr><th scope="row">A client booked online</th><td data-f="signals.client_booked_online.practices_did" data-fmt="int">56</td></tr>
+            </tbody>
+          </table></div>
+        </figure>
+        <div class="ship-why">
+          <p class="ship-big">A client booking online is one of the three moments that go with paying, yet only <span data-f="signals.client_booked_online.share_of_trials_pct" data-fmt="pct0">11%</span> of trials (<span data-f="signals.client_booked_online.practices_did" data-fmt="int">56</span> of <span data-f="base.practices" data-fmt="int">518</span>) got one in their first 14 days.</p>
+          <p>Practices that had one paid at <strong data-f="signals.client_booked_online.conversion_did_pct" data-fmt="pct1">33.9%</strong>, against <strong data-f="signals.client_booked_online.conversion_not_pct" data-fmt="pct1">9.7%</strong>. <mark class="hl">A booking page only brings in bookings if clients can find the link.</mark></p>
+        </div>
+      </div>
+
+      <!-- The idea and how it works -->
+      <div class="ship-idea">
+        <div class="idea-text">
+          <h3>The idea</h3>
+          <p class="idea-line"><strong>Open Slot</strong> is a free tool that turns a practitioner's booking link into ready-to-paste wording for every place a new client might find them, plus a printable QR card.</p>
+          <ul class="idea-chips">
+            <li>Free</li>
+            <li>No sign-up</li>
+            <li>Nothing stored</li>
+          </ul>
+        </div>
+        <ol class="how">
+          <li>
+            <span class="how-n">1</span>
+            <svg class="how-i" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="7" rx="2"/><rect x="6" y="19" width="28" height="7" rx="2"/><path d="M6 32h14"/></svg>
+            <h4>Enter your details and booking link</h4>
+            <p>Name, practice, who you work with, sessions and fees.</p>
+          </li>
+          <li>
+            <span class="how-n">2</span>
+            <svg class="how-i" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="5" width="22" height="30" rx="3"/><path d="M14 12h12M14 18h12M14 24h8"/></svg>
+            <h4>Get your kit</h4>
+            <p>Directory profile, enquiry reply, email signature, bio, voicemail, out-of-office and a printable card.</p>
+          </li>
+          <li>
+            <span class="how-n">3</span>
+            <svg class="how-i" viewBox="0 0 40 40" aria-hidden="true"><rect x="12" y="12" width="20" height="22" rx="3"/><path d="M8 27V9a3 3 0 0 1 3-3h15"/></svg>
+            <h4>Copy, paste, print</h4>
+            <p>Every output has a copy button. The card is business-card size, ready to print.</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Live demo -->
+      <div class="demo" id="demo">
+        <div class="demo-head">
+          <h3>Try it here</h3>
+          <p>Change anything and every output updates as you type. <a href="tool/" target="_blank" rel="noopener">Open the full tool in a new tab</a></p>
+        </div>
+        <div class="browser">
+          <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="addr">Open Slot · booking-link kit</span></div>
+          <div class="browser-view">
+            <iframe id="openslot-frame" src="tool/?embed=1" title="Open Slot booking-link kit" loading="lazy" allow="clipboard-write"></iframe>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary demo-more" id="demo-more" aria-expanded="false" aria-controls="openslot-frame" hidden>Show the whole kit</button>
+      </div>
+
+      <!-- Why it's worth it -->
+      <div class="jobs">
+        <h3>Two jobs for Carepatron</h3>
+        <div class="jobs-grid">
+          <div class="job job-activation">
+            <p class="job-k">Activation</p>
+            <h4>It's Email 2 in the journey</h4>
+            <p>Sent the morning after a practice first uses the scribe, to practices that haven't had an online booking yet. <a href="#journey">See the journey</a></p>
+          </div>
+          <div class="job job-acquisition">
+            <p class="job-k">Acquisition</p>
+            <h4>It's useful to any practitioner</h4>
+            <p>Carepatron user or not. It links to the free trial with UTM tracking.</p>
+          </div>
+        </div>
+        <div class="risk">
+          <h4>Why it's low-risk</h4>
+          <ul>
+            <li>Runs entirely in the browser</li>
+            <li>No backend, no accounts</li>
+            <li>No client data stored or sent</li>
+            <li>Cheap to host and maintain</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Measurement and next -->
+      <div class="ship-measure">
+        <div>
+          <h3>How we'd measure it</h3>
+          <ol class="ladder">
+            <li>Tool sessions</li>
+            <li>Copies per session, and which outputs get copied</li>
+            <li>Trial clicks from the tool, tracked with UTM</li>
+            <li>For trial users who get Email 2: the share with a first online booking within 7 days, against the journey's holdout</li>
+          </ol>
+          <p class="no-targets">No targets are claimed until there's data.</p>
+        </div>
+        <div>
+          <h3>What I'd do next</h3>
+          <ol class="next">
+            <li>Test it with five solo therapists.</li>
+            <li>Add formats for specific directories.</li>
+            <li>A/B test the call to action.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ 05 AI -->
+  <section class="section band-white" id="ai" data-band="light" aria-labelledby="ai-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow"><span class="n">05</span><span class="visually-hidden"> · </span>Tell us about the AI</p>
+        <h2 id="ai-title">AI did the heavy lifting. Checking it did the important work.</h2>
+        <p class="lead">I used Claude for most of the hands-on work: the analysis code, first drafts, charts and the tool. I checked its work two ways, with prompts built to break its findings and by hand. <mark class="hl">The checking is where most of the value came from.</mark></p>
+      </header>
+
+      <div class="ai-tools">
+        <h3>Tools</h3>
+        <dl class="tools">
+          <div><dt>Claude (Opus 5.5, in the Claude app)</dt><dd>Planning, the data analysis (it wrote and ran Python: pandas, SciPy, statsmodels), first drafts of the findings, journey and email, and building the tool.</dd></div>
+          <div><dt>Claude Docs</dt><dd>The <a href="https://claude.ai/artifact/G2PHeDeCCJq1HhGjfqePUR#4195a840-f5fd" rel="noopener">findings doc</a> and its charts.</dd></div>
+          <div><dt>Claude artifacts</dt><dd>Hosting the <a href="https://claude.ai/artifact/BKYJCFQ2LQ1A6KhPFHytpS" rel="noopener">first version of Open Slot</a>.</dd></div>
+          <div><dt>Claude Code</dt><dd>Building this site.</dd></div>
+          <div><dt>Custom skills</dt><dd>Reusable instructions I set up for Claude.</dd></div>
+        </dl>
+        <p class="tools-note">Every number in the findings comes from code run on the supplied CSVs, not from the model's memory, so each one can be re-run and checked.</p>
+      </div>
+
+      <div class="ai-method">
+        <h3>How I prompted and checked</h3>
+        <ol class="method">
+          <li>
+            <p class="m-k"><span class="m-n">1</span>Structured prompts</p>
+            <h4>Task, context, files, then a plan</h4>
+            <p>Each request set out the task, the context and the files, and asked for a plan before any analysis or building, so I could redirect early rather than fix a finished product.</p>
+          </li>
+          <li>
+            <p class="m-k"><span class="m-n">2</span>Probing prompts</p>
+            <h4>Built to break the findings, not polish them</h4>
+            <ul class="prompts">
+              <li>“Play devil's advocate: try to prove yourself wrong, or validate the finding by being unable to.”</li>
+              <li>“Are these spam accounts really spam?”</li>
+              <li>“Is there a better option for the tool?”</li>
+            </ul>
+          </li>
+          <li>
+            <p class="m-k"><span class="m-n">3</span>Manual validation</p>
+            <h4>Checked by hand</h4>
+            <p>I reviewed the accounts it flagged, checked that figures matched across the findings, journey and charts, and checked product claims against Carepatron's own pages.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="catch">
+        <div class="catch-head">
+          <h3>Where it got something wrong</h3>
+          <p>The first pass found a strong import signal and recommended building a tool around it. Both the number and the recommendation were wrong.</p>
+        </div>
+        <ol class="catch-steps">
+          <li class="cstep cstep-wrong">
+            <p class="cs-k"><span class="cs-n">1</span>First pass</p>
+            <h4>Importers paid at <span data-f="ai_story.first_pass_import_conversion_pct" data-fmt="pct0">36%</span> vs <span data-f="ai_story.first_pass_no_import_conversion_pct" data-fmt="pct0">7%</span>, so: build a client-list converter</h4>
+            <figure class="cs-fig" data-chart="importPair" data-variant="first">
+              <div class="chart-plot"></div>
+              <div class="chart-table-wrap"><table class="chart-table">
+              <caption>First pass: paid rate by whether the practice imported clients (all 30 days)</caption>
+              <thead><tr><th scope="col">Group</th><th scope="col">Paid rate</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Imported clients</th><td data-f="ai_story.first_pass_import_conversion_pct" data-fmt="pct1">36.3%</td></tr>
+                <tr><th scope="row">Didn't</th><td data-f="ai_story.first_pass_no_import_conversion_pct" data-fmt="pct1">7.2%</td></tr>
+              </tbody>
+            </table></div>
+            </figure>
+            <p>It counted imports across all 30 days, including after practices had paid.</p>
+          </li>
+          <li class="cstep cstep-fixed">
+            <p class="cs-k"><span class="cs-n">2</span>Re-run on the right window</p>
+            <h4>First 14 days, before paying: <span data-f="ai_story.corrected_window_import_conversion_pct" data-fmt="pct0">28%</span> vs <span data-f="ai_story.corrected_window_no_import_conversion_pct" data-fmt="pct0">10%</span></h4>
+            <figure class="cs-fig" data-chart="importPair" data-variant="fixed">
+              <div class="chart-plot"></div>
+              <div class="chart-table-wrap"><table class="chart-table">
+              <caption>Re-run: paid rate by whether the practice imported clients (days 0–14, before paying)</caption>
+              <thead><tr><th scope="col">Group</th><th scope="col">Paid rate</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Imported clients</th><td data-f="ai_story.corrected_window_import_conversion_pct" data-fmt="pct1">28.2%</td></tr>
+                <tr><th scope="row">Didn't</th><td data-f="ai_story.corrected_window_no_import_conversion_pct" data-fmt="pct1">9.8%</td></tr>
+              </tbody>
+            </table></div>
+            </figure>
+            <p>With the scribe, online bookings and invoices counted, importing showed no link of its own (odds ratio <span data-f="ai_story.import_odds_ratio_with_key_actions" data-fmt="or">0.98</span>, 95% interval <span data-f="joint_model.client_created_import.ci" data-fmt="cir">0.39–2.5</span>).</p>
+          </li>
+          <li class="cstep cstep-right">
+            <p class="cs-k"><span class="cs-n">3</span>Checked against the product</p>
+            <h4>Carepatron already has a built-in “Import from another platform” option</h4>
+            <p>It handles SimplePractice exports and spreadsheets. <a href="https://help.carepatron.com/en/articles/16579529-importing-clients-from-simplepractice-now-includes-their-insurance" rel="noopener">Source: Carepatron help centre</a></p>
+            <p class="cs-result">So the tool became Open Slot instead, aimed at online bookings: one of the three actions that held up in every check.</p>
+          </li>
+        </ol>
+        <p class="catch-how"><strong>How I noticed.</strong> Before building anything, I asked the AI to play devil's advocate. Re-running each signal with the stated rules and controls exposed the import result; checking Carepatron's own help pages exposed the duplicate. Without that step I'd have built a weaker copy of an existing feature, aimed at a lever the data doesn't support.</p>
+      </div>
+
+      <div class="small-catches">
+        <h3>Smaller catches</h3>
+        <ul>
+          <li>
+            <h4>The spam filter missed some</h4>
+            <p>Filtering by email domain caught <span data-f="cleaning.spam_caught_by_domain_filter" data-fmt="int">21</span> of the <span data-f="cleaning.spam_accounts" data-fmt="int">25</span> spam accounts. The same devil's-advocate pass found <span data-f="cleaning.spam_missed_by_domain_filter" data-fmt="int">4</span> more on a third throwaway domain. A behaviour rule (no clinical activity and 10+ portal invites) caught all <span data-f="cleaning.spam_accounts" data-fmt="int">25</span>.</p>
+          </li>
+          <li>
+            <h4>The first journey trigger couldn't single out leavers</h4>
+            <p>It entered practices with no activity 20 hours after sign-up, aimed at the <span data-f="dropoff.never_back_after_day0_pct" data-fmt="pct0">45%</span> who leave on day 0. It would have caught <span data-f="return_timing.no_return_by_20h_pct_of_trials" data-fmt="pct0">86%</span> of trials, because leavers and later returners look identical at the end of day 0. So the journey stopped trying to pick out leavers: it takes in everyone who hasn't come back, with a holdout, and every step after that waits for what the practice does.</p>
+          </li>
+          <li>
+            <h4>The tool had two small bugs</h4>
+            <p>A new service defaulted to 50 minutes, so a “15-minute intro call” read “50 minutes”, and a zero fee printed “$0” instead of “free”. Testing with awkward inputs caught both before I shared it.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lessons">
+        <h3>What I took from it</h3>
+        <ol>
+          <li><p><strong>The AI is fastest exactly where it's riskiest.</strong> It produced a confident number, and a sensible-sounding plan built on it, within minutes. The errors sat underneath, in definitions: which time window, which accounts count, before or after payment.</p></li>
+          <li><p><strong>The most useful prompt asked it to disprove its own work.</strong> Every catch above came from questioning an answer. Next time I'd build that step in from the start, and agree the definitions before looking at any results.</p></li>
+          <li><p><strong>Checking against the real world matters as much as checking the maths.</strong> The duplicate-feature problem wasn't in the data at all.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================================================================ FOOTER -->
+<footer class="site-footer band-dark" data-band="dark">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-by">Andre Nwofor · Independent submission for the Carepatron AI Growth Marketer internship · Not an official Carepatron site.</p>
+      <p>Data: fictional sample data supplied by Carepatron. Every figure is reproducible with the scripts in this repository.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://claude.ai/artifact/G2PHeDeCCJq1HhGjfqePUR#4195a840-f5fd" rel="noopener">Full findings doc</a></li>
+      <li><a href="tool/">Open Slot, the booking-link kit</a></li>
+      <li><a href="https://github.com/Andrepreston/The-Growth-Challenge" rel="noopener">GitHub repository</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="toast" id="toast" aria-hidden="true" hidden></div>
+
+<script src="data/findings.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/charts.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

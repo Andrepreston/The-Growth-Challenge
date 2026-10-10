@@ -1,0 +1,669 @@
+<title>Open Slot Booking Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: a two-column workbench. Your details on the left (sticky on wide screens); the kit stacks on the right, printable card first. */
+:root {
+  --bg: #F2F4F1;
+  --surface: #FFFFFF;
+  --ink: #17201C;
+  --muted: #5B6862;
+  --line: #D6DDD8;
+  --accent: #2D6A57;
+  --accent-ink: #FFFFFF;
+  --tint: #E3EEE8;
+  --warn: #9A5B13;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101513; --surface: #18201C; --ink: #E6EDE9; --muted: #9AA9A2; --line: #2B3631;
+    --accent: #7CC3A9; --accent-ink: #0E1A15; --tint: #1F2E28; --warn: #E3A55B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101513; --surface: #18201C; --ink: #E6EDE9; --muted: #9AA9A2; --line: #2B3631;
+  --accent: #7CC3A9; --accent-ink: #0E1A15; --tint: #1F2E28; --warn: #E3A55B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-inline: 20px;
+  padding-block: 32px 48px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 32px; }
+
+/* Header */
+.masthead { display: grid; gap: 10px; max-width: 70ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+h1 .slot { display: inline-block; border: 2px dashed var(--accent); border-radius: 12px; padding: 0 0.18em 0.06em; color: var(--accent); }
+.lede { font-size: 1.15rem; color: var(--ink); margin: 0; text-wrap: pretty; }
+.note { font-size: 0.95rem; color: var(--muted); margin: 0; }
+
+/* Workbench */
+.bench { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 860px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+
+.details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 22px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+@media (max-width: 860px) { .details { position: static; } }
+.details h2, .kit-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; margin: 0; letter-spacing: -0.01em; }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; min-width: 0; }
+legend { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 4px; }
+.field { display: grid; gap: 4px; min-width: 0; }
+label, .label { font-weight: 600; font-size: 0.92rem; }
+.hint { font-size: 0.85rem; color: var(--muted); }
+input[type="text"], input[type="url"], input[type="number"], select {
+  width: 100%; min-width: 0; font: inherit; font-size: 0.98rem; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, .out:focus-visible, .seg input:focus-visible + span {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+
+/* Segmented controls */
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; background: var(--bg); }
+.seg label { font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 5px 14px; border-radius: 999px; color: var(--muted); }
+.seg input:checked + span { background: var(--accent); color: var(--accent-ink); }
+
+/* Services editor */
+.services { display: grid; gap: 8px; }
+.svc { display: grid; grid-template-columns: minmax(0, 1fr) 64px 80px 32px; gap: 6px; align-items: center; }
+.svc-head { font-size: 0.78rem; color: var(--muted); }
+.svc-head span:nth-child(n+2) { text-align: left; }
+.icon-btn { width: 32px; height: 36px; border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 8px; cursor: pointer; font-size: 1.1rem; line-height: 1; }
+.icon-btn:hover { color: var(--ink); border-color: var(--muted); }
+.text-btn { justify-self: start; background: transparent; border: 1px dashed var(--accent); color: var(--accent); font: inherit; font-weight: 600; font-size: 0.9rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+.text-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+@media (max-width: 420px) {
+  .svc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px; }
+  .svc .svc-name { grid-column: 1 / -1; }
+  .svc-head { display: none; }
+}
+
+/* Kit */
+.kit { display: grid; gap: 18px; min-width: 0; }
+.kit-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.tone { display: flex; align-items: center; gap: 10px; }
+.tone .label { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+.block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 12px; min-width: 0; }
+.block-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.block-head > div { min-width: 0; }
+.block h3 { font-family: var(--display); font-weight: 500; font-size: 1.12rem; margin: 0; letter-spacing: -0.005em; }
+.where { margin: 2px 0 0; color: var(--muted); font-size: 0.92rem; }
+.copy { flex: none; font: inherit; font-weight: 600; font-size: 0.9rem; background: var(--tint); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px; cursor: pointer; min-width: 74px; }
+.copy:hover { border-color: var(--accent); }
+.copy.done { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.out { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--body); font-size: 0.98rem; line-height: 1.55; background: var(--bg); border-radius: 8px; padding: 14px 16px; border-left: 3px solid var(--line); }
+.out.mono { font-family: var(--mono); font-size: 0.88rem; }
+.count { margin: 0; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.count.over { color: var(--warn); }
+
+/* Card */
+.card-block { gap: 14px; }
+.card-stage { background: var(--tint); border-radius: 8px; padding: clamp(14px, 3vw, 28px); display: grid; place-items: center; }
+.card-stage img { width: 100%; max-width: 560px; aspect-ratio: 1050 / 600; height: auto; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.10); background: #FBFBF8; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.card-actions .hint { margin: 0; }
+
+.status { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 999px; font-size: 0.92rem; font-weight: 600; max-width: calc(100% - 32px); text-align: center; }
+
+footer { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 8px; color: var(--muted); font-size: 0.92rem; max-width: 75ch; }
+footer p { margin: 0; }
+footer a { color: var(--accent); font-weight: 600; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy, .seg span { transition: background-color 120ms ease, color 120ms ease; }
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">For therapists, counsellors and allied health practitioners</p>
+    <h1>Open <span class="slot">Slot</span></h1>
+    <p class="lede">Add your booking link once and get ready-to-use wording for every place a new client might find you: your directory profile, enquiry replies, email signature, bio, voicemail and a printable card.</p>
+    <p class="note">Example details are filled in. Replace them with yours. Nothing you type leaves this page.</p>
+  </header>
+
+  <main class="bench">
+    <form class="details" id="details" autocomplete="off">
+      <h2>Your details</h2>
+
+      <fieldset>
+        <legend>You</legend>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" value="Maya Chen">
+        </div>
+        <div class="field">
+          <label for="profession">Profession</label>
+          <input type="text" id="profession" list="professions" value="Psychologist">
+          <datalist id="professions">
+            <option value="Psychologist"></option>
+            <option value="Counselor"></option>
+            <option value="Counsellor"></option>
+            <option value="Licensed Marriage and Family Therapist"></option>
+            <option value="Psychotherapist"></option>
+            <option value="Clinical Social Worker"></option>
+            <option value="Psychiatrist"></option>
+            <option value="Physical Therapist"></option>
+            <option value="Physiotherapist"></option>
+            <option value="Occupational Therapist"></option>
+            <option value="Speech-Language Pathologist"></option>
+            <option value="Dietitian"></option>
+            <option value="Massage Therapist"></option>
+            <option value="Coach"></option>
+          </datalist>
+        </div>
+        <div class="field">
+          <label for="practice">Practice name</label>
+          <input type="text" id="practice" value="Harbour Lane Psychology">
+        </div>
+        <div class="field">
+          <label for="who">Who you work with</label>
+          <input type="text" id="who" value="adults with anxiety and burnout">
+          <span class="hint">A short phrase. It finishes the sentence "I work with…"</span>
+        </div>
+        <div class="field">
+          <span class="label" id="fmt-label">Sessions offered</span>
+          <div class="seg" role="radiogroup" aria-labelledby="fmt-label">
+            <label><input type="radio" name="format" id="fmt-in" value="in"><span>In person</span></label>
+            <label><input type="radio" name="format" id="fmt-tele" value="tele"><span>Telehealth</span></label>
+            <label><input type="radio" name="format" id="fmt-both" value="both" checked><span>Both</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Services</legend>
+        <div class="field">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option value="USD" selected>US dollar ($)</option>
+            <option value="CAD">Canadian dollar ($)</option>
+            <option value="AUD">Australian dollar ($)</option>
+            <option value="NZD">New Zealand dollar ($)</option>
+            <option value="GBP">Pound sterling (£)</option>
+          </select>
+        </div>
+        <div class="services" id="services">
+          <div class="svc svc-head" aria-hidden="true"><span>Service</span><span>Minutes</span><span>Fee</span><span></span></div>
+        </div>
+        <button type="button" class="text-btn" id="add-svc">Add a service</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Booking link</legend>
+        <div class="field">
+          <label for="link">Your online booking page</label>
+          <input type="url" id="link" value="https://book.example.com/maya-chen" inputmode="url">
+          <span class="hint">The page where clients pick a time. The example link is not real.</span>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="kit" aria-labelledby="kit-title">
+      <div class="kit-head">
+        <h2 id="kit-title">Your kit</h2>
+        <div class="tone">
+          <span class="label" id="tone-label">Tone</span>
+          <div class="seg" role="radiogroup" aria-labelledby="tone-label">
+            <label><input type="radio" name="tone" id="tone-warm" value="warm" checked form="details"><span>Warm</span></label>
+            <label><input type="radio" name="tone" id="tone-plain" value="plain" form="details"><span>Plain</span></label>
+          </div>
+        </div>
+      </div>
+
+      <article class="block card-block">
+        <div class="block-head">
+          <div>
+            <h3>Printable card</h3>
+            <p class="where">For the waiting room, the reception desk, or to hand over at the end of a first session. Business-card size, 3.5 × 2 in, at 300 dpi.</p>
+          </div>
+          <button type="button" class="copy" id="copy-card">Copy image</button>
+        </div>
+        <div class="card-stage">
+          <img id="card-img" alt="Printable appointment card with your practice name, booking link and a QR code">
+        </div>
+        <div class="card-actions">
+          <p class="hint" id="card-hint">To save it, right-click the card (or press and hold on a phone) and choose Save image.</p>
+        </div>
+        <canvas id="card-canvas" width="1050" height="600" hidden></canvas>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Directory profile</h3>
+            <p class="where">The last lines of your profile on a therapist directory, so a reader can book straight away instead of phoning.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-directory">Copy</button>
+        </div>
+        <pre class="out" id="out-directory" tabindex="0"></pre>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Reply to a new enquiry</h3>
+            <p class="where">Send the link in your first reply. Every extra email about times is a chance for someone to drift away.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-enquiry">Copy</button>
+        </div>
+        <pre class="out" id="out-enquiry" tabindex="0"></pre>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Email signature</h3>
+            <p class="where">Every email you send becomes a quiet invitation to book.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-signature">Copy</button>
+        </div>
+        <pre class="out" id="out-signature" tabindex="0"></pre>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Social or website bio</h3>
+            <p class="where">Instagram and similar profiles cap bios at about 150 characters.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-bio">Copy</button>
+        </div>
+        <pre class="out" id="out-bio" tabindex="0"></pre>
+        <p class="count" id="count-bio" aria-live="polite"></p>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Voicemail greeting</h3>
+            <p class="where">Read aloud when you record it. The link is spelled out the way you would say it.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-voicemail">Copy</button>
+        </div>
+        <pre class="out" id="out-voicemail" tabindex="0"></pre>
+      </article>
+
+      <article class="block">
+        <div class="block-head">
+          <div>
+            <h3>Out-of-office reply</h3>
+            <p class="where">Turn it on for session days, so enquiries get a way to book while you're with clients.</p>
+          </div>
+          <button type="button" class="copy" data-target="out-ooo">Copy</button>
+        </div>
+        <pre class="out" id="out-ooo" tabindex="0"></pre>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>No booking page yet? Most practice management software includes one. <a href="https://www.carepatron.com/?utm_source=open-slot&amp;utm_medium=free-tool&amp;utm_campaign=day0-comeback" target="_blank" rel="noopener">Carepatron</a> includes a client booking page with its 14-day free trial.</p>
+    <p>Open Slot is a concept by Andre Nwofor, made for the Carepatron growth challenge. It is not an official Carepatron tool. Everything runs in your browser; nothing you type is sent anywhere.</p>
+  </footer>
+</div>
+
+<div class="status" id="status" role="status" aria-live="polite" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const form = $('details');
+  const SYMBOL = { USD: '$', CAD: '$', AUD: '$', NZD: '$', GBP: '£' };
+  const FORMAT_WORDS = { in: 'in person', tele: 'by telehealth', both: 'in person or by telehealth' };
+  const FORMAT_SHORT = { in: 'In person', tele: 'Telehealth', both: 'In person & telehealth' };
+  const MAX_SERVICES = 5;
+
+  let services = [
+    { name: 'Initial consultation', mins: '50', fee: '180' },
+    { name: 'Follow-up session', mins: '50', fee: '160' }
+  ];
+
+  // ---------- services editor ----------
+  const svcWrap = $('services');
+  function renderServices() {
+    svcWrap.querySelectorAll('.svc:not(.svc-head)').forEach((el) => el.remove());
+    services.forEach((s, i) => {
+      const row = document.createElement('div');
+      row.className = 'svc';
+      row.innerHTML =
+        '<input type="text" class="svc-name" id="svc-name-' + i + '" aria-label="Service ' + (i + 1) + ' name" placeholder="Service name">' +
+        '<input type="number" id="svc-mins-' + i + '" aria-label="Service ' + (i + 1) + ' minutes" min="5" max="240" step="5" placeholder="min">' +
+        '<input type="number" id="svc-fee-' + i + '" aria-label="Service ' + (i + 1) + ' fee" min="0" step="1" placeholder="fee">' +
+        '<button type="button" class="icon-btn" aria-label="Remove service ' + (i + 1) + '">×</button>';
+      const [nameI, minsI, feeI, del] = row.children;
+      nameI.value = s.name; minsI.value = s.mins; feeI.value = s.fee;
+      nameI.addEventListener('input', () => { s.name = nameI.value; update(); });
+      minsI.addEventListener('input', () => { s.mins = minsI.value; update(); });
+      feeI.addEventListener('input', () => { s.fee = feeI.value; update(); });
+      del.addEventListener('click', () => { services.splice(i, 1); renderServices(); update(); });
+      svcWrap.appendChild(row);
+    });
+    $('add-svc').disabled = services.length >= MAX_SERVICES;
+  }
+  $('add-svc').addEventListener('click', () => {
+    if (services.length >= MAX_SERVICES) return;
+    services.push({ name: '', mins: '', fee: '' });
+    renderServices();
+    const last = $('svc-name-' + (services.length - 1));
+    if (last) last.focus();
+    update();
+  });
+
+  // ---------- state ----------
+  function read() {
+    const fmt = (form.querySelector('input[name="format"]:checked') || {}).value || 'both';
+    const tone = (document.querySelector('input[name="tone"]:checked') || {}).value || 'warm';
+    const raw = $('link').value.trim();
+    let link = '';
+    if (raw) link = /^https?:\/\//i.test(raw) ? raw : 'https://' + raw;
+    const display = link ? link.replace(/^https?:\/\//i, '').replace(/\/$/, '') : '';
+    return {
+      name: $('name').value.trim() || 'Your name',
+      profession: $('profession').value.trim(),
+      practice: $('practice').value.trim(),
+      who: $('who').value.trim(),
+      format: fmt,
+      tone: tone,
+      sym: SYMBOL[$('currency').value] || '$',
+      link: link || '[your booking link]',
+      display: display || '[your booking link]',
+      hasLink: !!link,
+      services: services.filter((s) => s.name.trim())
+    };
+  }
+
+  const fee = (d, s) => {
+    if (String(s.fee).trim() === '') return '';
+    const v = Number(s.fee);
+    if (!isFinite(v)) return '';
+    return v === 0 ? 'free' : d.sym + v.toLocaleString('en-US');
+  };
+  const mins = (s) => (String(s.mins).trim() !== '' ? s.mins + ' min' : '');
+  function svcInline(d, s) {
+    const bits = [mins(s), fee(d, s)].filter(Boolean).join(', ');
+    return s.name.trim() + (bits ? ' (' + bits + ')' : '');
+  }
+  function svcBullet(d, s) {
+    const m = String(s.mins).trim() !== '' ? s.mins + ' minutes' : '';
+    const bits = [m, fee(d, s)].filter(Boolean).join(', ');
+    return '• ' + s.name.trim() + (bits ? ': ' + bits : '');
+  }
+  const nameLine = (d) => (d.profession ? d.name + ', ' + d.profession : d.name);
+  const spoken = (txt) => txt.replace(/\./g, ' dot ').replace(/\//g, ' slash ').replace(/-/g, ' dash ').replace(/\s+/g, ' ').trim();
+
+  // ---------- copy builders ----------
+  function directory(d) {
+    const list = d.services.map((s) => svcInline(d, s)).join('; ');
+    if (d.tone === 'warm') {
+      return [
+        'Ready to take the first step? You can see my availability and book online, any time, without needing to phone: ' + d.link,
+        '',
+        'I see clients ' + FORMAT_WORDS[d.format] + '.' + (list ? ' Sessions: ' + list + '.' : '')
+      ].join('\n');
+    }
+    return ['Book online: ' + d.link, FORMAT_SHORT[d.format] + (list ? ' · ' + list : '')].join('\n');
+  }
+
+  function enquiry(d) {
+    const bullets = d.services.map((s) => svcBullet(d, s));
+    const intro = d.who ? 'I work with ' + d.who + ', ' + FORMAT_WORDS[d.format] + '.' : 'I see clients ' + FORMAT_WORDS[d.format] + '.';
+    if (d.tone === 'warm') {
+      return [
+        'Hi [name],',
+        '',
+        'Thank you for getting in touch. ' + intro,
+        '',
+        'You can see my current availability and book a time that suits you here:',
+        d.link,
+        ...(bullets.length ? ['', ...bullets] : []),
+        '',
+        "If none of the times work for you, reply to this email and we'll find another option.",
+        '',
+        'Warm regards,',
+        d.name,
+        ...(d.practice ? [d.practice] : [])
+      ].join('\n');
+    }
+    return [
+      'Hi [name],',
+      '',
+      'Thanks for your message. You can book a time directly here: ' + d.link,
+      ...(bullets.length ? ['', ...bullets] : []),
+      '',
+      'Sessions are ' + FORMAT_WORDS[d.format] + '. If you have questions before booking, reply to this email.',
+      '',
+      'Kind regards,',
+      d.name
+    ].join('\n');
+  }
+
+  function signature(d) {
+    const lines = [nameLine(d)];
+    if (d.practice) lines.push(d.practice);
+    if (d.tone === 'warm') lines.push(FORMAT_SHORT[d.format] + ' sessions');
+    lines.push((d.tone === 'warm' ? 'Book a session online: ' : 'Book online: ') + d.display);
+    return lines.join('\n');
+  }
+
+  function bio(d) {
+    const prof = d.profession || 'Practitioner';
+    if (d.tone === 'warm') {
+      return prof + (d.who ? ' for ' + d.who : '') + '. ' + FORMAT_SHORT[d.format] + '.\nBook online: ' + d.display;
+    }
+    return prof + (d.who ? ' · ' + d.who : '') + ' · ' + FORMAT_SHORT[d.format] + '\nBook: ' + d.display;
+  }
+
+  function voicemail(d) {
+    const where = d.practice ? ' at ' + d.practice : '';
+    const linkSaid = d.hasLink ? spoken(d.display) : '[your booking link]';
+    if (d.tone === 'warm') {
+      return "Hi, you've reached " + d.name + where + ". I'm with a client at the moment. The quickest way to book or change an appointment is online, at " + linkSaid + ". Or leave your name and number, and I'll call you back within one working day. If you need urgent help, please call your local emergency number.";
+    }
+    return "You've reached " + d.name + where + '. To book or change an appointment, go to ' + linkSaid + ". Otherwise, leave your name and number and I'll return your call within one working day. In an emergency, call your local emergency number.";
+  }
+
+  function ooo(d) {
+    if (d.tone === 'warm') {
+      return [
+        "Thank you for your email. I'm with clients today and reply to messages within one working day.",
+        '',
+        'If you would like to book or change an appointment, you can do that any time here: ' + d.link,
+        '',
+        'If you need urgent support, please contact your local emergency services or a crisis line.',
+        '',
+        d.name
+      ].join('\n');
+    }
+    return [
+      "I'm in sessions today and will reply within one working day.",
+      '',
+      'To book or change an appointment: ' + d.link,
+      '',
+      'For urgent support, contact your local emergency services or a crisis line.',
+      '',
+      d.name
+    ].join('\n');
+  }
+
+  // ---------- card ----------
+  const canvas = $('card-canvas');
+  const ctx = canvas.getContext('2d');
+  const PAPER = '#FBFBF8', INK = '#17201C', MUTED = '#5B6862', ACCENT = '#2D6A57', RULE = '#D6DDD8';
+  const fontsReady = (document.fonts && document.fonts.load)
+    ? Promise.all([
+        document.fonts.load("700 54px 'Bricolage Grotesque'"),
+        document.fonts.load("400 30px 'Source Sans 3'"),
+        document.fonts.load("600 30px 'Source Sans 3'"),
+        document.fonts.load("500 28px 'IBM Plex Mono'")
+      ]).catch(() => null)
+    : Promise.resolve();
+
+  function fitText(text, font, size, maxW, minSize) {
+    let s = size;
+    ctx.font = font.replace('{s}', s);
+    while (ctx.measureText(text).width > maxW && s > minSize) { s -= 1; ctx.font = font.replace('{s}', s); }
+    if (ctx.measureText(text).width > maxW) {
+      let t = text;
+      while (t.length > 1 && ctx.measureText(t + '…').width > maxW) t = t.slice(0, -1);
+      return t + '…';
+    }
+    return text;
+  }
+
+  function drawQR(text, x, y, size) {
+    if (typeof qrcode !== 'function') return false;
+    try {
+      const qr = qrcode(0, 'M');
+      qr.addData(text);
+      qr.make();
+      const n = qr.getModuleCount();
+      const cell = Math.floor(size / n);
+      const off = Math.floor((size - cell * n) / 2);
+      ctx.fillStyle = INK;
+      for (let r = 0; r < n; r++) {
+        for (let c = 0; c < n; c++) {
+          if (qr.isDark(r, c)) ctx.fillRect(x + off + c * cell, y + off + r * cell, cell, cell);
+        }
+      }
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function drawCard(d) {
+    const W = canvas.width, H = canvas.height, L = 72, textW = 560;
+    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, W, H);
+    ctx.textBaseline = 'alphabetic';
+
+    // practice + name
+    ctx.fillStyle = INK;
+    const practice = d.practice || d.name;
+    const pText = fitText(practice, "700 {s}px 'Bricolage Grotesque', sans-serif", 54, textW, 34);
+    ctx.fillText(pText, L, 128);
+    ctx.fillStyle = MUTED;
+    const nText = fitText(d.practice ? nameLine(d) : (d.profession || ''), "400 {s}px 'Source Sans 3', sans-serif", 30, textW, 22);
+    ctx.fillText(nText, L, 176);
+
+    // rule
+    ctx.fillStyle = RULE; ctx.fillRect(L, 222, 80, 3);
+
+    // booking call to action
+    ctx.fillStyle = ACCENT;
+    ctx.font = "600 30px 'Source Sans 3', sans-serif";
+    ctx.fillText('Book your next appointment', L, 392);
+    ctx.fillStyle = INK;
+    const lText = fitText(d.display, "500 {s}px 'IBM Plex Mono', monospace", 28, textW, 16);
+    ctx.fillText(lText, L, 440);
+    ctx.fillStyle = MUTED;
+    ctx.font = "400 24px 'Source Sans 3', sans-serif";
+    ctx.fillText(FORMAT_SHORT[d.format] + ' sessions', L, 484);
+
+    // QR
+    const qx = 690, qy = 110, qs = 300;
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(qx - 16, qy - 16, qs + 32, qs + 32);
+    let ok = false;
+    if (d.hasLink) ok = drawQR(d.link, qx, qy, qs);
+    if (!ok) {
+      ctx.strokeStyle = RULE; ctx.lineWidth = 3; ctx.setLineDash([12, 10]);
+      ctx.strokeRect(qx, qy, qs, qs); ctx.setLineDash([]);
+      ctx.fillStyle = MUTED; ctx.font = "400 22px 'Source Sans 3', sans-serif"; ctx.textAlign = 'center';
+      ctx.fillText(d.hasLink ? 'QR code unavailable' : 'Add your booking link', qx + qs / 2, qy + qs / 2 + 8);
+      ctx.textAlign = 'left';
+    }
+    ctx.fillStyle = MUTED; ctx.font = "600 22px 'Source Sans 3', sans-serif"; ctx.textAlign = 'center';
+    ctx.fillText('Scan to book', qx + qs / 2, qy + qs + 52);
+    ctx.textAlign = 'left';
+
+    try { $('card-img').src = canvas.toDataURL('image/png'); } catch (e) { /* leave previous image */ }
+  }
+
+  // ---------- render ----------
+  let cardTimer = null;
+  function update() {
+    const d = read();
+    $('out-directory').textContent = directory(d);
+    $('out-enquiry').textContent = enquiry(d);
+    $('out-signature').textContent = signature(d);
+    const b = bio(d);
+    $('out-bio').textContent = b;
+    const n = Array.from(b).length;
+    const cnt = $('count-bio');
+    cnt.textContent = n + ' / 150 characters' + (n > 150 ? ' · shorten "Who you work with" to fit' : '');
+    cnt.classList.toggle('over', n > 150);
+    $('out-voicemail').textContent = voicemail(d);
+    $('out-ooo').textContent = ooo(d);
+    clearTimeout(cardTimer);
+    cardTimer = setTimeout(() => fontsReady.then(() => drawCard(read())), 120);
+  }
+
+  // ---------- copy ----------
+  const statusEl = $('status');
+  let statusTimer = null;
+  function say(msg) {
+    statusEl.textContent = msg;
+    statusEl.hidden = false;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => { statusEl.hidden = true; }, 2600);
+  }
+  function selectNode(el) {
+    try {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } catch (e) { /* ignore */ }
+  }
+  function flash(btn, label) {
+    const original = btn.dataset.label || btn.textContent;
+    btn.dataset.label = original;
+    btn.textContent = label;
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('done'); }, 1600);
+  }
+  document.querySelectorAll('.copy[data-target]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const el = $(btn.dataset.target);
+      const text = el.textContent;
+      const fallback = () => { selectNode(el); say('Text selected. Press Ctrl+C (or ⌘C) to copy.'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => { flash(btn, 'Copied'); say('Copied to your clipboard'); }, fallback);
+      } else { fallback(); }
+    });
+  });
+  $('copy-card').addEventListener('click', () => {
+    const btn = $('copy-card');
+    const fallback = () => say('Your browser blocked copying images here. Right-click or press and hold the card, then choose Save image.');
+    try {
+      if (!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem)) { fallback(); return; }
+      const blobPromise = new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('no image'))), 'image/png'));
+      navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })])
+        .then(() => { flash(btn, 'Copied'); say('Card image copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  document.querySelectorAll('input[name="tone"]').forEach((r) => r.addEventListener('change', update));
+  renderServices();
+  update();
+})();
+</script>

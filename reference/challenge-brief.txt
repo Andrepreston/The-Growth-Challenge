@@ -1,0 +1,73 @@
+Carepatron · AI Growth Marketer internship
+The growth challenge
+Thanks for applying. This is a small, real-shaped piece of the work you'd do with us: read some product data, design a lifecycle journey, write for busy clinicians, and ship something to the web.
+
+About 3 hours
+AI tools welcome
+Fake data
+Some context
+Carepatron is practice management software for health and wellness practitioners: therapists, psychologists, counsellors, physios, dietitians and more. They use it for scheduling, notes, billing, telehealth and a client portal. New practices get a 14-day free trial.
+
+Plenty of practices sign up. Fewer get to the point where Carepatron is running their real practice, with real clients. We want to know what happens in those first two weeks that separates the practices that stay and pay from the ones that don't, and then do something about it.
+
+The data below is invented. It's shaped like ours, but there are no real customers in it.
+
+The data
+About 550 trial workspaces that signed up in July and August 2026, and everything they did in the product.
+
+trials.csv one row per workspace
+events.csv 7,665 events
+trials.csv
+Column	Meaning
+workspace_id	The workspace (one practice account).
+signed_up_at_local	When the workspace was created, in the practice's local time.
+timezone	The practice's time zone.
+country, profession, practice_name, owner_email	What the practice told us at sign-up.
+team_size_at_signup	1, 2-5 or 6+.
+paid_within_30_days	yes or no.
+paid_at_utc	When they started paying, in UTC. Empty if they didn't.
+events.csv
+workspace_id, timestamp_utc (UTC), event, and properties (key=value pairs, separated by semicolons).
+
+Event	What it means
+workspace_created	The practice created its workspace. The trial starts.
+template_opened	Opened a note or form template.
+note_created	Wrote a clinical note.
+appointment_created	Put an appointment in the calendar.
+ai_scribe_used	Used the AI scribe to draft a note from a session.
+client_created	Added a client record. source = manual, import or online_booking.
+client_portal_invite_sent	Invited a client to their client portal.
+intake_form_sent	Sent an intake form to a client.
+appointment_reminder_sent	An appointment reminder went to a client.
+invoice_sent	Sent an invoice to a client.
+client_booked_online	A client booked through the practice's booking page.
+video_call_started	A telehealth video call started.
+staff_invited	Invited a team member.
+billing_page_viewed	Opened the plans and billing page.
+subscription_started	Started a paid plan. plan and billing in properties.
+What we'd like
+1
+Read the data
+What, in a practice's first 14 days, goes with paying? Tell us what you found and how confident you are. Show us whatever helps you make the point.
+
+2
+Design one journey
+Based on what you found, design one behaviour-triggered journey (email, in-app or both) that would get more practices to the moments that matter. Tell us what triggers it, who gets it, what they get and when, and how we'd know whether it worked.
+
+3
+Write one message
+Write one email from that journey. Your reader is a solo therapist who checks email between sessions.
+
+4
+Ship something
+Build and put live one small thing a practitioner could use: a landing page for your journey, a free tool, a calculator, anything you think would earn its place. Send us the link.
+
+5
+Tell us about the AI
+Which tools you used, and one place where the AI got something wrong or made something worse, and how you noticed.
+
+How to send it
+Share your work however you like: a doc, a repo, a deck, a page, a message. Reply to the email that sent you this link, before the date in that email.
+
+Ground rules. Use any AI tools you'd use at work. We care about your judgement, so please spend about 3 hours, not a weekend. It's fine to leave things unfinished; tell us what you'd do next. Questions? Reply to the same email.
+Carepatron growth team · The data on this page is fictional.
